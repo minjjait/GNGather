@@ -1,0 +1,89 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "name": "진주아이템",
+      "iconPath": "Textures/Item/1"
+    },
+    {
+      "id": "2",
+      "name": "거창아이템",
+      "iconPath": "Textures/Item/2"
+    },
+    {
+      "id": "3",
+      "name": "함양아이템",
+      "iconPath": "Textures/Item/3"
+    },
+    {
+      "id": "4",
+      "name": "합천아이템",
+      "iconPath": "Textures/Item/4"
+    },
+    {
+      "id": "5",
+      "name": "산청아이템",
+      "iconPath": "Textures/Item/5"
+    },
+    {
+      "id": "6",
+      "name": "하동아이템",
+      "iconPath": "Textures/Item/6"
+    },
+    {
+      "id": "7",
+      "name": "남해아이템",
+      "iconPath": "Textures/Item/7"
+    },
+    {
+      "id": "8",
+      "name": "사천아이템",
+      "iconPath": "Textures/Item/8"
+    },
+    {
+      "id": "9",
+      "name": "고성아이템",
+      "iconPath": "Textures/Item/9"
+    },
+    {
+      "id": "10",
+      "name": "의령아이템",
+      "iconPath": "Textures/Item/10"
+    },
+    {
+      "id": "11",
+      "name": "함안아이템",
+      "iconPath": "Textures/Item/11"
+    },
+    {
+      "id": "12",
+      "name": "창녕아이템",
+      "iconPath": "Textures/Item/12"
+    },
+    {
+      "id": "13",
+      "name": "밀양아이템",
+      "iconPath": "Textures/Item/13"
+    },
+    {
+      "id": "14",
+      "name": "창원아이템",
+      "iconPath": "Textures/Item/14"
+    },
+    {
+      "id": "15",
+      "name": "거제아이템",
+      "iconPath": "Textures/Item/15"
+    },
+    {
+      "id": "16",
+      "name": "김해아이템",
+      "iconPath": "Textures/Item/16"
+    },
+    {
+      "id": "17",
+      "name": "양산아이템",
+      "iconPath": "Textures/Item/17"
+    }
+  ]
+} 

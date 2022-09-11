@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+package Protocol;
+option csharp_namespace = "Google.Protobuf.Protocol";
+
+enum MsgId {
+  S_ENTER_GAME = 0;
+  S_LEAVE_GAME = 1;
+  S_SPAWN = 2;
+  S_DESPAWN = 3;
+  C_MOVE = 4;
+  S_MOVE = 5;
+  S_CONNECTED = 6;
+  C_LOGIN = 7;
+  S_LOGIN = 8;
+  C_CREATE_PLAYER = 9;
+  S_CREATE_PLAYER = 10;
+  C_ENTER_GAME = 11;
+  C_PONG = 12; 
+  S_PING = 13;
+  C_SPEECH_BUBBLE = 14;
+  S_SPEECH_BUBBLE = 15;
+  C_INTERACTION_FESTIVAL = 16;
+  S_INTERACTION_FESTIVAL = 17;
+  S_ITEM_LIST = 18;
+  C_QUEST_CLEAR = 19;
+  S_ADD_ITEM = 20;
+}
+
+enum CreatureState {
+  IDLE = 0;
+  MOVING = 1;
+  DEAD = 2;
+}
+
+enum MoveDir {
+  UP = 0;
+  DOWN = 1;
+  LEFT = 2;
+  RIGHT = 3;
+}
+
+enum GameObjectType {
+  NONE = 0;
+  PLAYER = 1;
+}
+
+enum PlayerServerState {
+  SERVER_STATE_LOGIN = 0;
+  SERVER_STATE_LOBBY = 1;
+  SERVER_STATE_GAME = 2;
+}
+
+message S_EnterGame {
+  ObjectInfo player = 1;
+}
+
+message S_LeaveGame {
+}
+
+message S_Spawn {
+  repeated ObjectInfo objects = 1;
+}
+
+message S_Despawn {
+  repeated int32 objectIds = 1;
+}
+
+message C_Move {
+  PositionInfo posInfo = 1;
+}
+
+message S_Move {
+  int32 objectId = 1;
+  PositionInfo posInfo = 2;
+}
+
+message S_Connected {
+}
+
+message C_Login {
+  string uniqueId = 1;
+}
+
+message S_Login {
+  int32 loginOk = 1;
+  repeated LobbyPlayerInfo players = 2;
+}
+
+message C_CreatePlayer {
+  string name = 1;
+}
+
+message S_CreatePlayer {
+  LobbyPlayerInfo player = 1;
+}
+
+message C_EnterGame {
+  string name = 1;
+}
+
+message S_Ping {
+}
+
+message C_Pong {
+}
+
+message C_SpeechBubble {
+ string chat = 1;
+}
+
+message S_SpeechBubble {
+  int32 objectId = 1;
+  string chat = 2;
+}
+
+message C_InteractionFestival{
+  int32 objectId = 1;
+}
+
+message S_InteractionFestival{
+  string festivalName = 1;
+  string festivalExplain = 2;
+  string relatedAddress = 3;
+}
+
+message S_ItemList{
+  repeated ItemInfo items = 1;
+}
+
+message C_QuestClear{
+  int32 questId = 1;
+}
+
+message S_AddItem{
+  ItemInfo item = 1;
+}
+
+message LobbyPlayerInfo {
+  int32 playerDbId = 1;
+  string name = 2;
+}
+
+message ObjectInfo {
+  int32 objectId = 1;
+  string name = 2;
+  PositionInfo posInfo = 3;
+}
+
+message PositionInfo {
+  CreatureState state = 1;
+  MoveDir moveDir = 2;
+  int32 posX = 3;
+  int32 posY = 4;
+}
+
+message ItemInfo {
+  int32 itemDbId = 1;
+  int32 templateId = 2;
+}
