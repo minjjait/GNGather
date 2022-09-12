@@ -52,6 +52,7 @@ public class UI_QuestInfo : UI_Popup
         Data.Quest quest = null;
         Managers.Player.Quests.TryGetValue(_id, out quest);
 
+        //퀘스트 없을 시
         if(quest == null)
         {
             GetButton((int)Buttons.ClearButton).gameObject.SetActive(false);
@@ -78,14 +79,14 @@ public class UI_QuestInfo : UI_Popup
             }
             else
             {
-                if(Managers.Player.QuestCleared[_id] == true)//퀘스트 조건 충족시 (quest o, item x)
+                if(Managers.Player.QuestCleared[_id] == true)//퀘스트 조건 충족시
                 {
                     GetText((int)Texts.ClearText).text = "Quest Clear!";
                     GetButton((int)Buttons.ClearButton).gameObject.BindEvent(
                         (PointerEventData evt) => { QuestClear(); });
 
                 }
-                else//퀘스트 조건 불충족 시 (quest o, item x) 불충족 조건을 찾아야한다..!!!!!!!
+                else//퀘스트 조건 불충족 시
                 {
                     GetText((int)Texts.ClearText).text = "퀘스트 진행 중";
                     GetButton((int)Buttons.ClearButton).interactable = false;

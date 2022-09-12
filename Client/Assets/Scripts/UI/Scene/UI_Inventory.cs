@@ -7,16 +7,15 @@ public class UI_Inventory : UI_Base
 {
     enum GameObjects
     {
-        Background
+        InventoryBackground
     }
     public override void Init()
     {
         Bind<GameObject>(typeof(GameObjects));
 
-        for(int i = 0; i < 17; i++)
+        for(int i = 0; i < 18; i++)
         {
-            GetObject((int)GameObjects.Background).transform.GetChild(i)
-                .GetChild(1).gameObject.SetActive(false);
+            GetObject((int)GameObjects.InventoryBackground).transform.GetChild(i).gameObject.SetActive(false);
         }
     }
 }
