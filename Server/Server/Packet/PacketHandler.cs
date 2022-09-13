@@ -104,4 +104,23 @@ class PacketHandler
 
 		//room.Push(room.HandleInteractionFestival, player, fesPacket);
 	}
+
+	public static void C_TransfortationHandler(PacketSession session, IMessage packet)
+	{
+		C_Transfortation transPacket = packet as C_Transfortation;
+		ClientSession clientSession = session as ClientSession;
+
+		//Console.WriteLine($"C_Move ({movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY})");
+
+		Player player = clientSession.MyPlayer;
+		if (player == null)
+			return;
+
+		GameRoom room = player.Room;
+		if (room == null)
+			return;
+
+		//room.Push(room.HandleMove, player, movePacket);
+	}
+
 }

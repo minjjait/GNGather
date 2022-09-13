@@ -109,6 +109,11 @@ class PacketHandler
 		S_AddItem addItemPacket = packet as S_AddItem;
 	}
 
+	public static void S_TransfortationHandler(PacketSession session, IMessage packet)
+	{
+		S_Transfortation transPacket = packet as S_Transfortation;
+	}
+
 }
 
 
