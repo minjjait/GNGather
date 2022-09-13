@@ -52,7 +52,10 @@ public class MyPlayerController : PlayerController
 
 	void LateUpdate()
 	{
-		Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+		foreach(Camera cam in Camera.allCameras)
+        {
+			cam.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+		}
 	}
 
 	void GetUIKeyInput()
