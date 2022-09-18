@@ -9,6 +9,7 @@ public class MyPlayerController : PlayerController
 {
 	NPCBoundary _festivalNPC = null;
 	NPCBoundary _questNPC = null;
+	NPCBoundary _transfortationNPC = null;
 
 	bool _moveKeyPressed = false;
 	bool _doConversation = false;
@@ -107,13 +108,35 @@ public class MyPlayerController : PlayerController
 		//상호작용
 		if (Input.GetKeyDown(KeyCode.F))
 		{
-			if (_festivalNPC == null)
-				return;
+			if (_festivalNPC != null)
+            {
+				C_InteractionFestival fesPacket = new C_InteractionFestival();
+				fesPacket.ObjectId = _festivalNPC.Id;
+				Managers.Network.Send(fesPacket);
+			}
 
-			C_InteractionFestival fesPacket = new C_InteractionFestival();
-			fesPacket.ObjectId = _festivalNPC.Id;
-			Managers.Network.Send(fesPacket);
+			if (_questNPC != null)
+			{
+				Debug.Log("퀘스트 인터렉션");
+				/*
+				C_InteractionFestival fesPacket = new C_InteractionFestival();
+				fesPacket.ObjectId = _festivalNPC.Id;
+				Managers.Network.Send(fesPacket);
+				*/
+			}
+
+			if (_transfortationNPC != null)
+			{
+				Debug.Log("버스 인터렉션");
+				/*
+				C_InteractionFestival fesPacket = new C_InteractionFestival();
+				fesPacket.ObjectId = _festivalNPC.Id;
+				Managers.Network.Send(fesPacket);
+				*/
+			}
 		}
+
+
 	}
 
 	void GetDirInput()
@@ -204,7 +227,11 @@ public class MyPlayerController : PlayerController
 		{
 			_questNPC = collision.gameObject.GetComponent<NPCBoundary>();
 		}
-    }
+		else if (collision.tag == "TransfortationNPC")
+		{
+			_transfortationNPC = collision.gameObject.GetComponent<NPCBoundary>();
+		}
+	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
@@ -215,6 +242,10 @@ public class MyPlayerController : PlayerController
 		else if (collision.tag == "QuestNPC")
 		{
 			_questNPC = null;
+		}
+		else if (collision.tag == "TransfortationNPC")
+		{
+			_transfortationNPC = null;
 		}
 	}
 }

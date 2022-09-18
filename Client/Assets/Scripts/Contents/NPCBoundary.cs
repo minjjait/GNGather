@@ -26,6 +26,10 @@ public class NPCBoundary : MonoBehaviour
             {
                 _bc.Chat = $"{Id}번 퀘스트 NPC입니다~~";
             }
+            else if (gameObject.tag == "TransfortationNPC")
+            {
+                _bc.Chat = $"{Id}번 버스 NPC입니다~~";
+            }
         }
     }
 }
