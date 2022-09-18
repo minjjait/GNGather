@@ -82,5 +82,13 @@ namespace Server.Game
 				player.Session.Send(resFesPacket);
             }
 		}
+
+		public void HandleAddQuest(Player player, GameRoom room, C_AddQuest questPacket)
+        {
+			if (player == null)
+				return;
+
+			DbTransaction.QuestAccept(player, room);
+        }
 	}
 }

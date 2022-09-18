@@ -88,6 +88,22 @@ class PacketHandler
 		room.Push(room.HandleInteractionFestival, player, fesPacket);
 	}
 
+	public static void C_AddQuestHandler(PacketSession session, IMessage packet)
+	{
+		C_AddQuest questPacket = packet as C_AddQuest;
+		ClientSession clientSession = session as ClientSession;
+
+		Player player = clientSession.MyPlayer;
+		if (player == null)
+			return;
+
+		GameRoom room = player.Room;
+		if (room == null)
+			return;
+
+		room.Push(room.HandleAddQuest, player, room, questPacket);
+	}
+
 	//TODO
 	public static void C_QuestClearHandler(PacketSession session, IMessage packet)
 	{

@@ -37,6 +37,8 @@ class PacketManager
 		_handler.Add((ushort)MsgId.CSpeechBubble, PacketHandler.C_SpeechBubbleHandler);		
 		_onRecv.Add((ushort)MsgId.CInteractionFestival, MakePacket<C_InteractionFestival>);
 		_handler.Add((ushort)MsgId.CInteractionFestival, PacketHandler.C_InteractionFestivalHandler);		
+		_onRecv.Add((ushort)MsgId.CAddQuest, MakePacket<C_AddQuest>);
+		_handler.Add((ushort)MsgId.CAddQuest, PacketHandler.C_AddQuestHandler);		
 		_onRecv.Add((ushort)MsgId.CQuestClear, MakePacket<C_QuestClear>);
 		_handler.Add((ushort)MsgId.CQuestClear, PacketHandler.C_QuestClearHandler);		
 		_onRecv.Add((ushort)MsgId.CTransfortation, MakePacket<C_Transfortation>);

@@ -15,8 +15,8 @@ public class DataManager
 
 	public void Init()
     {
-       ItemDict = LoadJson<Data.ItemData, int, Data.Item>("ItemData").MakeDict();
-       QuestDict = LoadJson<Data.QuestData, int, Data.Quest>("QuestData").MakeDict();
+        ItemDict = LoadJson<Data.ItemData, int, Data.Item>("ItemData").MakeDict();
+        QuestDict = LoadJson<Data.QuestData, int, Data.Quest>("QuestData").MakeDict();
 	}
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>

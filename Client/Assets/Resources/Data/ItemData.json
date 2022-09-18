@@ -2,92 +2,92 @@
   "items": [
     {
       "id": "1",
-      "name": "ÁøÁÖ¾ÆÀÌÅÛ",
+      "name": "ì§„ì£¼ì•„ì´í…œ",
       "iconPath": "Textures/Item/1"
     },
     {
       "id": "2",
-      "name": "°ÅÃ¢¾ÆÀÌÅÛ",
+      "name": "ê±°ì°½ì•„ì´í…œ",
       "iconPath": "Textures/Item/2"
     },
     {
       "id": "3",
-      "name": "ÇÔ¾ç¾ÆÀÌÅÛ",
+      "name": "í•¨ì–‘ì•„ì´í…œ",
       "iconPath": "Textures/Item/3"
     },
     {
       "id": "4",
-      "name": "ÇÕÃµ¾ÆÀÌÅÛ",
+      "name": "í•©ì²œì•„ì´í…œ",
       "iconPath": "Textures/Item/4"
     },
     {
       "id": "5",
-      "name": "»êÃ»¾ÆÀÌÅÛ",
+      "name": "ì‚°ì²­ì•„ì´í…œ",
       "iconPath": "Textures/Item/5"
     },
     {
       "id": "6",
-      "name": "ÇÏµ¿¾ÆÀÌÅÛ",
+      "name": "í•˜ë™ì•„ì´í…œ",
       "iconPath": "Textures/Item/6"
     },
     {
       "id": "7",
-      "name": "³²ÇØ¾ÆÀÌÅÛ",
+      "name": "ë‚¨í•´ì•„ì´í…œ",
       "iconPath": "Textures/Item/7"
     },
     {
       "id": "8",
-      "name": "»çÃµ¾ÆÀÌÅÛ",
+      "name": "ì‚¬ì²œì•„ì´í…œ",
       "iconPath": "Textures/Item/8"
     },
     {
       "id": "9",
-      "name": "°í¼º¾ÆÀÌÅÛ",
+      "name": "ê³ ì„±ì•„ì´í…œ",
       "iconPath": "Textures/Item/9"
     },
     {
       "id": "10",
-      "name": "ÀÇ·É¾ÆÀÌÅÛ",
+      "name": "ì˜ë ¹ì•„ì´í…œ",
       "iconPath": "Textures/Item/10"
     },
     {
       "id": "11",
-      "name": "ÇÔ¾È¾ÆÀÌÅÛ",
+      "name": "í•¨ì•ˆì•„ì´í…œ",
       "iconPath": "Textures/Item/11"
     },
     {
       "id": "12",
-      "name": "Ã¢³ç¾ÆÀÌÅÛ",
+      "name": "ì°½ë…•ì•„ì´í…œ",
       "iconPath": "Textures/Item/12"
     },
     {
       "id": "13",
-      "name": "¹Ğ¾ç¾ÆÀÌÅÛ",
+      "name": "ë°€ì–‘ì•„ì´í…œ",
       "iconPath": "Textures/Item/13"
     },
     {
       "id": "14",
-      "name": "Ã¢¿ø¾ÆÀÌÅÛ",
+      "name": "ì°½ì›ì•„ì´í…œ",
       "iconPath": "Textures/Item/14"
     },
     {
       "id": "15",
-      "name": "°ÅÁ¦¾ÆÀÌÅÛ",
+      "name": "ê±°ì œì•„ì´í…œ",
       "iconPath": "Textures/Item/15"
     },
     {
       "id": "16",
-      "name": "±èÇØ¾ÆÀÌÅÛ",
+      "name": "ê¹€í•´ì•„ì´í…œ",
       "iconPath": "Textures/Item/16"
     },
     {
       "id": "17",
-      "name": "¾ç»ê¾ÆÀÌÅÛ",
+      "name": "ì–‘ì‚°ì•„ì´í…œ",
       "iconPath": "Textures/Item/17"
     },
     {
       "id": "18",
-      "name": "Åë¿µ¾ÆÀÌÅÛ",
+      "name": "í†µì˜ì•„ì´í…œ",
       "iconPath": "Textures/Item/18"
     }
   ]

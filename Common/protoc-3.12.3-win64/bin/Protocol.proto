@@ -24,7 +24,7 @@ enum MsgId {
   S_INTERACTION_FESTIVAL = 17;
   S_ITEM_LIST = 18;
   S_ADD_ITEM = 19;
-  C_ADD_QUEST = 20
+  C_ADD_QUEST = 20;
   C_QUEST_CLEAR = 21;
   C_TRANSFORTATION = 22;
   S_TRANSFORTATION = 23;
@@ -136,11 +136,11 @@ message S_AddItem{
 }
 
 message C_AddQuest{
-  int32 questId = 1;
+  int32 objectId = 1;
 }
 
 message C_QuestClear{
-  int32 questId = 1;
+  int32 objectId = 1;
 }
 
 message C_Transfortation{

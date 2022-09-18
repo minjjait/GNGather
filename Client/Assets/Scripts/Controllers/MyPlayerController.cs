@@ -117,22 +117,14 @@ public class MyPlayerController : PlayerController
 
 			if (_questNPC != null)
 			{
-				Debug.Log("퀘스트 인터렉션");
-				/*
-				C_InteractionFestival fesPacket = new C_InteractionFestival();
-				fesPacket.ObjectId = _festivalNPC.Id;
-				Managers.Network.Send(fesPacket);
-				*/
+				Managers.UI.OpenPopup = true;
+				Managers.Player.QuestNPCId = _questNPC.Id;
+				UI_QuestInfo quest = Managers.UI.ShowPopupUI<UI_QuestInfo>();
 			}
 
 			if (_transfortationNPC != null)
 			{
 				Debug.Log("버스 인터렉션");
-				/*
-				C_InteractionFestival fesPacket = new C_InteractionFestival();
-				fesPacket.ObjectId = _festivalNPC.Id;
-				Managers.Network.Send(fesPacket);
-				*/
 			}
 		}
 
