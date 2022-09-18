@@ -70,5 +70,53 @@ namespace Server.DB
 		{
 
 		}
+
+		public static void QuestAccept(Player player, GameRoom room)
+		{
+			if (player == null || room == null)
+				return;
+
+			// 1) DB에다가 저장 요청
+			// 2) DB 저장 OK
+			// 3) 메모리에 적용
+			/*
+			QuestDb itemDb = new ItemDb()
+			{
+				TemplateId = rewardData.itemId,
+				Count = rewardData.count,
+				Slot = slot.Value,
+				OwnerDbId = player.PlayerDbId
+			};
+
+			// You
+			Instance.Push(() =>
+			{
+				using (AppDbContext db = new AppDbContext())
+				{
+					db.Items.Add(itemDb);
+					bool success = db.SaveChangesEx();
+					if (success)
+					{
+						// Me
+						room.Push(() =>
+						{
+							Item newItem = Item.MakeItem(itemDb);
+							player.Inven.Add(newItem);
+
+							// Client Noti
+							{
+								S_AddItem itemPacket = new S_AddItem();
+								ItemInfo itemInfo = new ItemInfo();
+								itemInfo.MergeFrom(newItem.Info);
+								itemPacket.Items.Add(itemInfo);
+
+								player.Session.Send(itemPacket);
+							}
+						});
+					}
+				}
+			});
+			*/
+		}
 	}
 }

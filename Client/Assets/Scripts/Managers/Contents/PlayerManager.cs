@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerManager
 {
-    public Dictionary<int, Data.Item> Items { get; private set; } = new Dictionary<int, Data.Item>();
-    public Dictionary<int, Data.Quest> Quests { get; private set; } = new Dictionary<int, Data.Quest>();
-    public bool[] QuestCleared { get; private set; } = new bool[18];
+    public Dictionary<int, Data.Item> Items { get; set; } = new Dictionary<int, Data.Item>();
+    public Dictionary<int, Data.Quest> Quests { get; set; } = new Dictionary<int, Data.Quest>();
+    public bool[] QuestCleared { get; set; } = new bool[18];
+    public int QuestNPCId { get; set; }
 }
