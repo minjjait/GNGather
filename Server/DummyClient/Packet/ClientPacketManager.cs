@@ -49,6 +49,8 @@ class PacketManager
 		_handler.Add((ushort)MsgId.SItemList, PacketHandler.S_ItemListHandler);		
 		_onRecv.Add((ushort)MsgId.SAddItem, MakePacket<S_AddItem>);
 		_handler.Add((ushort)MsgId.SAddItem, PacketHandler.S_AddItemHandler);		
+		_onRecv.Add((ushort)MsgId.SQuestList, MakePacket<S_QuestList>);
+		_handler.Add((ushort)MsgId.SQuestList, PacketHandler.S_QuestListHandler);		
 		_onRecv.Add((ushort)MsgId.STransfortation, MakePacket<S_Transfortation>);
 		_handler.Add((ushort)MsgId.STransfortation, PacketHandler.S_TransfortationHandler);
 	}

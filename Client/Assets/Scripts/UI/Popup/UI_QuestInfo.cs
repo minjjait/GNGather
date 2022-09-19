@@ -103,7 +103,10 @@ public class UI_QuestInfo : UI_Popup
         //퀘스트 패킷 보내기(C_ADD_QUEST)
         //DB에 퀘스트 추가
         C_AddQuest questPacket = new C_AddQuest();
-        questPacket.ObjectId = _id;
+        questPacket.Quest = new QuestInfo();
+        questPacket.Quest.ObjectId = _id;
+        questPacket.Quest.IsCleared = false;
+
         Managers.Network.Send(questPacket);
 
         GetButton((int)Buttons.YesButton).gameObject.SetActive(false);

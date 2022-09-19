@@ -71,7 +71,7 @@ namespace Server.DB
 
 		}
 
-		public static void QuestAccept(Player player, GameRoom room)
+		public static void QuestAccept(Player player, GameRoom room, C_AddQuest questPacket)
 		{
 			if (player == null || room == null)
 				return;
@@ -79,12 +79,10 @@ namespace Server.DB
 			// 1) DB에다가 저장 요청
 			// 2) DB 저장 OK
 			// 3) 메모리에 적용
-			/*
-			QuestDb itemDb = new ItemDb()
+			QuestDb questDb = new QuestDb()
 			{
-				TemplateId = rewardData.itemId,
-				Count = rewardData.count,
-				Slot = slot.Value,
+				TemplateId = questPacket.Quest.ObjectId,
+				IsCleared = false,
 				OwnerDbId = player.PlayerDbId
 			};
 
@@ -93,30 +91,30 @@ namespace Server.DB
 			{
 				using (AppDbContext db = new AppDbContext())
 				{
-					db.Items.Add(itemDb);
+					db.Quests.Add(questDb);
 					bool success = db.SaveChangesEx();
 					if (success)
 					{
 						// Me
 						room.Push(() =>
 						{
-							Item newItem = Item.MakeItem(itemDb);
-							player.Inven.Add(newItem);
+							//Item newItem = Item.MakeItem(itemDb);
+							//player.Inven.Add(newItem);
 
 							// Client Noti
-							{
+							{/*
 								S_AddItem itemPacket = new S_AddItem();
 								ItemInfo itemInfo = new ItemInfo();
 								itemInfo.MergeFrom(newItem.Info);
 								itemPacket.Items.Add(itemInfo);
 
 								player.Session.Send(itemPacket);
+							 */
 							}
 						});
 					}
 				}
 			});
-			*/
 		}
 	}
 }

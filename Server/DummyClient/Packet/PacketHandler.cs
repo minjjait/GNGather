@@ -114,6 +114,10 @@ class PacketHandler
 		S_Transfortation transPacket = packet as S_Transfortation;
 	}
 
+	public static void S_QuestListHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestList questListPacket = packet as S_QuestList;
+	}
 }
 
 

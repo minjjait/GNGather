@@ -156,6 +156,7 @@ class PacketHandler
 		S_AddItem addItemPacket = packet as S_AddItem;
 	}
 
+	//TODO
 	public static void S_TransfortationHandler(PacketSession session, IMessage packet)
 	{
 		S_Transfortation transPacket = packet as S_Transfortation;
@@ -172,5 +173,24 @@ class PacketHandler
 		if (cc == null)
 			return;
 
+	}
+
+	//TODO
+	public static void S_QuestListHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestList questListPacket = packet as S_QuestList;
+
+		Managers.Player.Quests.Clear();
+		Managers.Player.QuestCleared = null;
+
+		foreach(QuestInfo quest in questListPacket.Quests)
+        {
+			Managers.Player.Quests.Add(quest.ObjectId, Managers.Data.QuestDict[quest.ObjectId]);
+			Managers.Player.QuestCleared[quest.ObjectId] = quest.IsCleared;
+
+			Debug.Log(Managers.Player.Quests[quest.ObjectId]);
+			Debug.Log(Managers.Player.QuestCleared[quest.ObjectId]);
+			
+        }
 	}
 }

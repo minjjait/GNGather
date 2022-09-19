@@ -14,6 +14,7 @@ namespace Server.DB
 		public DbSet<ItemDb> Items { get; set; }
 		public DbSet<RegionDb> Regions { get; set; }
 		public DbSet<FestivalDb> Festivals { get; set; }
+		public DbSet<QuestDb> Quests { get; set; }
 
 		static readonly ILoggerFactory _logger = LoggerFactory.Create(builder => { builder.AddConsole(); });
 
@@ -37,11 +38,11 @@ namespace Server.DB
 				.IsUnique();
 
 			builder.Entity<RegionDb>()
-				.HasIndex(p => p.RegionName)
+				.HasIndex(r => r.RegionName)
 				.IsUnique();
 
 			builder.Entity<FestivalDb>()
-				.HasIndex(p => p.FestivalName)
+				.HasIndex(f => f.FestivalName)
 				.IsUnique();
 		}
 	}

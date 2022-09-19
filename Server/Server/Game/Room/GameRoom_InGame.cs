@@ -88,7 +88,7 @@ namespace Server.Game
 			if (player == null)
 				return;
 
-			DbTransaction.QuestAccept(player, room);
+			DbTransaction.QuestAccept(player, room, questPacket);
         }
 	}
 }

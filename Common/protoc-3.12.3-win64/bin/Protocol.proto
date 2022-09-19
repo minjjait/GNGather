@@ -24,10 +24,11 @@ enum MsgId {
   S_INTERACTION_FESTIVAL = 17;
   S_ITEM_LIST = 18;
   S_ADD_ITEM = 19;
-  C_ADD_QUEST = 20;
-  C_QUEST_CLEAR = 21;
-  C_TRANSFORTATION = 22;
-  S_TRANSFORTATION = 23;
+  S_QUEST_LIST = 20;
+  C_ADD_QUEST = 21;
+  C_QUEST_CLEAR = 22;
+  C_TRANSFORTATION = 23;
+  S_TRANSFORTATION = 24;
 }
 
 enum CreatureState {
@@ -135,12 +136,16 @@ message S_AddItem{
   ItemInfo item = 1;
 }
 
+message S_QuestList{
+  repeated QuestInfo quests = 1;
+}
+
 message C_AddQuest{
-  int32 objectId = 1;
+  QuestInfo quest = 1;
 }
 
 message C_QuestClear{
-  int32 objectId = 1;
+  QuestInfo quest = 1;
 }
 
 message C_Transfortation{
@@ -173,4 +178,9 @@ message PositionInfo {
 message ItemInfo {
   int32 itemDbId = 1;
   int32 templateId = 2;
+}
+
+message QuestInfo{
+  int32 objectId = 1;
+  bool isCleared = 2;
 }

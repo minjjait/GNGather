@@ -98,6 +98,30 @@ namespace Server
 				MyPlayer.Info.PosInfo.PosY = 0;
 				MyPlayer.Session = this;
 
+				S_QuestList questListPacket = new S_QuestList();
+
+				//퀘스트 목록을 가져온다
+				using (AppDbContext db = new AppDbContext())
+				{
+					List<QuestDb> quests = db.Quests
+						.Where(q => q.OwnerDbId == playerInfo.PlayerDbId)
+						.ToList();
+
+
+					foreach(QuestDb questDb in quests)
+                    {
+						QuestInfo questInfo = new QuestInfo();
+
+						questInfo.ObjectId = questDb.TemplateId;
+						questInfo.IsCleared = questDb.IsCleared;
+
+						//외않되.. IsCleared 외 않 드러가는거지
+                        questListPacket.Quests.Add(questInfo);
+                    }
+				}
+
+				Send(questListPacket);
+
 				/*
 				// 아이템 목록을 갖고 온다
 				using (AppDbContext db = new AppDbContext())
@@ -122,7 +146,6 @@ namespace Server
 
 				Send(itemListPacket);
 				*/
-
 			}
 
 			ServerState = PlayerServerState.ServerStateGame;
