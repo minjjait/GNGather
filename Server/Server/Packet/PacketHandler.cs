@@ -104,23 +104,6 @@ class PacketHandler
 		room.Push(room.HandleAddQuest, player, room, questPacket);
 	}
 
-	//TODO
-	public static void C_QuestClearHandler(PacketSession session, IMessage packet)
-	{
-		C_QuestClear questClearPacket = packet as C_QuestClear;
-		ClientSession clientSession = session as ClientSession;
-
-		Player player = clientSession.MyPlayer;
-		if (player == null)
-			return;
-
-		GameRoom room = player.Room;
-		if (room == null)
-			return;
-
-		//room.Push(room.HandleInteractionFestival, player, fesPacket);
-	}
-
 	public static void C_TransfortationHandler(PacketSession session, IMessage packet)
 	{
 		C_Transfortation transPacket = packet as C_Transfortation;

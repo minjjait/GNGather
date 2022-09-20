@@ -45,7 +45,7 @@ namespace Google.Protobuf.Protocol {
             "dG9jb2wuSXRlbUluZm8iLQoJU19BZGRJdGVtEiAKBGl0ZW0YASABKAsyEi5Q",
             "cm90b2NvbC5JdGVtSW5mbyIyCgtTX1F1ZXN0TGlzdBIjCgZxdWVzdHMYASAD",
             "KAsyEy5Qcm90b2NvbC5RdWVzdEluZm8iMAoKQ19BZGRRdWVzdBIiCgVxdWVz",
-            "dBgBIAEoCzITLlByb3RvY29sLlF1ZXN0SW5mbyIyCgxDX1F1ZXN0Q2xlYXIS",
+            "dBgBIAEoCzITLlByb3RvY29sLlF1ZXN0SW5mbyIyCgxTX1F1ZXN0Q2xlYXIS",
             "IgoFcXVlc3QYASABKAsyEy5Qcm90b2NvbC5RdWVzdEluZm8iOwoQQ19UcmFu",
             "c2ZvcnRhdGlvbhInCgdwb3NJbmZvGAEgASgLMhYuUHJvdG9jb2wuUG9zaXRp",
             "b25JbmZvIk0KEFNfVHJhbnNmb3J0YXRpb24SEAoIb2JqZWN0SWQYASABKAUS",
@@ -66,7 +66,7 @@ namespace Google.Protobuf.Protocol {
             "X1NQRUVDSF9CVUJCTEUQDhITCg9TX1NQRUVDSF9CVUJCTEUQDxIaChZDX0lO",
             "VEVSQUNUSU9OX0ZFU1RJVkFMEBASGgoWU19JTlRFUkFDVElPTl9GRVNUSVZB",
             "TBAREg8KC1NfSVRFTV9MSVNUEBISDgoKU19BRERfSVRFTRATEhAKDFNfUVVF",
-            "U1RfTElTVBAUEg8KC0NfQUREX1FVRVNUEBUSEQoNQ19RVUVTVF9DTEVBUhAW",
+            "U1RfTElTVBAUEg8KC0NfQUREX1FVRVNUEBUSEQoNU19RVUVTVF9DTEVBUhAW",
             "EhQKEENfVFJBTlNGT1JUQVRJT04QFxIUChBTX1RSQU5TRk9SVEFUSU9OEBgq",
             "LwoNQ3JlYXR1cmVTdGF0ZRIICgRJRExFEAASCgoGTU9WSU5HEAESCAoEREVB",
             "RBACKjAKB01vdmVEaXISBgoCVVAQABIICgRET1dOEAESCAoETEVGVBACEgkK",
@@ -99,7 +99,7 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_AddItem), global::Google.Protobuf.Protocol.S_AddItem.Parser, new[]{ "Item" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_QuestList), global::Google.Protobuf.Protocol.S_QuestList.Parser, new[]{ "Quests" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_AddQuest), global::Google.Protobuf.Protocol.C_AddQuest.Parser, new[]{ "Quest" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_QuestClear), global::Google.Protobuf.Protocol.C_QuestClear.Parser, new[]{ "Quest" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_QuestClear), global::Google.Protobuf.Protocol.S_QuestClear.Parser, new[]{ "Quest" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Transfortation), global::Google.Protobuf.Protocol.C_Transfortation.Parser, new[]{ "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Transfortation), global::Google.Protobuf.Protocol.S_Transfortation.Parser, new[]{ "ObjectId", "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.LobbyPlayerInfo), global::Google.Protobuf.Protocol.LobbyPlayerInfo.Parser, new[]{ "PlayerDbId", "Name" }, null, null, null, null),
@@ -136,7 +136,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("S_ADD_ITEM")] SAddItem = 19,
     [pbr::OriginalName("S_QUEST_LIST")] SQuestList = 20,
     [pbr::OriginalName("C_ADD_QUEST")] CAddQuest = 21,
-    [pbr::OriginalName("C_QUEST_CLEAR")] CQuestClear = 22,
+    [pbr::OriginalName("S_QUEST_CLEAR")] SQuestClear = 22,
     [pbr::OriginalName("C_TRANSFORTATION")] CTransfortation = 23,
     [pbr::OriginalName("S_TRANSFORTATION")] STransfortation = 24,
   }
@@ -3031,11 +3031,11 @@ namespace Google.Protobuf.Protocol {
 
   }
 
-  public sealed partial class C_QuestClear : pb::IMessage<C_QuestClear> {
-    private static readonly pb::MessageParser<C_QuestClear> _parser = new pb::MessageParser<C_QuestClear>(() => new C_QuestClear());
+  public sealed partial class S_QuestClear : pb::IMessage<S_QuestClear> {
+    private static readonly pb::MessageParser<S_QuestClear> _parser = new pb::MessageParser<S_QuestClear>(() => new S_QuestClear());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<C_QuestClear> Parser { get { return _parser; } }
+    public static pb::MessageParser<S_QuestClear> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -3048,21 +3048,21 @@ namespace Google.Protobuf.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public C_QuestClear() {
+    public S_QuestClear() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public C_QuestClear(C_QuestClear other) : this() {
+    public S_QuestClear(S_QuestClear other) : this() {
       quest_ = other.quest_ != null ? other.quest_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public C_QuestClear Clone() {
-      return new C_QuestClear(this);
+    public S_QuestClear Clone() {
+      return new S_QuestClear(this);
     }
 
     /// <summary>Field number for the "quest" field.</summary>
@@ -3078,11 +3078,11 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as C_QuestClear);
+      return Equals(other as S_QuestClear);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(C_QuestClear other) {
+    public bool Equals(S_QuestClear other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -3132,7 +3132,7 @@ namespace Google.Protobuf.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(C_QuestClear other) {
+    public void MergeFrom(S_QuestClear other) {
       if (other == null) {
         return;
       }

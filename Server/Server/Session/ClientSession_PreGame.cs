@@ -115,7 +115,6 @@ namespace Server
 						questInfo.ObjectId = questDb.TemplateId;
 						questInfo.IsCleared = questDb.IsCleared;
 
-						//외않되.. IsCleared 외 않 드러가는거지
                         questListPacket.Quests.Add(questInfo);
                     }
 				}

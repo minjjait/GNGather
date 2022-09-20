@@ -118,6 +118,11 @@ class PacketHandler
 	{
 		S_QuestList questListPacket = packet as S_QuestList;
 	}
+
+	public static void S_QuestClearHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestClear questClearPacket = packet as S_QuestClear;
+	}
 }
 
 

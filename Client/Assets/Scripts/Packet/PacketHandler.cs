@@ -143,9 +143,10 @@ class PacketHandler
 
 		fesInfo.SetInfo();
 	}
-	
-	//TODO
-	public static void S_ItemListHandler(PacketSession session, IMessage packet)
+
+    #region QUEST&ITEM
+    //TODO
+    public static void S_ItemListHandler(PacketSession session, IMessage packet)
 	{
 		S_ItemList itemListPacket = packet as S_ItemList;
 	}
@@ -155,9 +156,29 @@ class PacketHandler
 	{
 		S_AddItem addItemPacket = packet as S_AddItem;
 	}
+	public static void S_QuestListHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestList questListPacket = packet as S_QuestList;
+
+		Managers.Player.Quests.Clear();
+
+		foreach (QuestInfo quest in questListPacket.Quests)
+		{
+			Managers.Player.Quests.Add(quest.ObjectId, Managers.Data.QuestDict[quest.ObjectId]);
+			Managers.Player.QuestCleared[quest.ObjectId] = quest.IsCleared;
+		}
+	}
 
 	//TODO
-	public static void S_TransfortationHandler(PacketSession session, IMessage packet)
+	public static void S_QuestClearHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestClear questClearPacket = packet as S_QuestClear;
+
+	}
+
+    #endregion
+    //TODO
+    public static void S_TransfortationHandler(PacketSession session, IMessage packet)
 	{
 		S_Transfortation transPacket = packet as S_Transfortation;
 
@@ -175,22 +196,6 @@ class PacketHandler
 
 	}
 
-	//TODO
-	public static void S_QuestListHandler(PacketSession session, IMessage packet)
-	{
-		S_QuestList questListPacket = packet as S_QuestList;
+	
 
-		Managers.Player.Quests.Clear();
-		Managers.Player.QuestCleared = null;
-
-		foreach(QuestInfo quest in questListPacket.Quests)
-        {
-			Managers.Player.Quests.Add(quest.ObjectId, Managers.Data.QuestDict[quest.ObjectId]);
-			Managers.Player.QuestCleared[quest.ObjectId] = quest.IsCleared;
-
-			Debug.Log(Managers.Player.Quests[quest.ObjectId]);
-			Debug.Log(Managers.Player.QuestCleared[quest.ObjectId]);
-			
-        }
-	}
 }

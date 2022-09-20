@@ -26,7 +26,7 @@ enum MsgId {
   S_ADD_ITEM = 19;
   S_QUEST_LIST = 20;
   C_ADD_QUEST = 21;
-  C_QUEST_CLEAR = 22;
+  S_QUEST_CLEAR = 22;
   C_TRANSFORTATION = 23;
   S_TRANSFORTATION = 24;
 }
@@ -144,7 +144,7 @@ message C_AddQuest{
   QuestInfo quest = 1;
 }
 
-message C_QuestClear{
+message S_QuestClear{
   QuestInfo quest = 1;
 }
 

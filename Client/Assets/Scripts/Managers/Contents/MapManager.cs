@@ -78,10 +78,21 @@ public class MapManager
 		int xCount = MaxX - MinX + 1;
 		int yCount = MaxY - MinY + 1;
 		_collision = new bool[yCount, xCount];
-
+		/*
+		for(int y = 0; y < yCount; y++)
+		{
+			string line = reader.ReadLine();
+			string[] lines = line.Split(new char[] { ' ' });
+			foreach(string li in lines)
+            {
+				Debug.Log(li);
+            }
+		}
+		*/
 		for (int y = 0; y < yCount; y++)
 		{
 			string line = reader.ReadLine();
+			
 			for (int x = 0; x < xCount; x++)
 			{
 				_collision[y, x] = (line[x] == '1' ? true : false);
