@@ -110,12 +110,16 @@ namespace Server
 
 					foreach(QuestDb questDb in quests)
                     {
-						QuestInfo questInfo = new QuestInfo();
+						Quest quest = Quest.MakeQuest(questDb);
 
-						questInfo.ObjectId = questDb.TemplateId;
-						questInfo.IsCleared = questDb.IsCleared;
+                        if (quest != null)
+                        {
+							MyPlayer.Quests.Add(quest.TemplateId, quest);
 
-                        questListPacket.Quests.Add(questInfo);
+							QuestInfo info = new QuestInfo();
+							info.MergeFrom(quest.Info);
+							questListPacket.Quests.Add(info);
+						}
                     }
 				}
 

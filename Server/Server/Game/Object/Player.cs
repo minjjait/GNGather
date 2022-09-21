@@ -13,6 +13,7 @@ namespace Server.Game
 		public int PlayerDbId { get; set; }
 		public ClientSession Session { get; set; }
 		public VisionCube Vision { get; private set; }
+		public Dictionary<int, Quest> Quests { get; } = new Dictionary<int, Quest>();
 
 		public Player()
 		{

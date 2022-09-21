@@ -32,7 +32,7 @@ namespace Data
 
 	#region Quest
 	[Serializable]
-	public class Quest
+	public class QuestData
 	{
 		public int id;
 		public string name;
@@ -41,14 +41,14 @@ namespace Data
 	}
 
 	[Serializable]
-	public class QuestData : ILoader<int, Quest>
+	public class QuestLoader : ILoader<int, QuestData>
 	{
-		public List<Quest> quests = new List<Quest>();
+		public List<QuestData> quests = new List<QuestData>();
 
-		public Dictionary<int, Quest> MakeDict()
+		public Dictionary<int, QuestData> MakeDict()
 		{
-			Dictionary<int, Quest> dict = new Dictionary<int, Quest>();
-			foreach (Quest quest in quests)
+			Dictionary<int, QuestData> dict = new Dictionary<int, QuestData>();
+			foreach (QuestData quest in quests)
 				dict.Add(quest.id, quest);
 			return dict;
 		}

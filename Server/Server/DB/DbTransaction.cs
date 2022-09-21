@@ -81,7 +81,7 @@ namespace Server.DB
 			// 3) 메모리에 적용
 			QuestDb questDb = new QuestDb()
 			{
-				TemplateId = questPacket.Quest.ObjectId,
+				TemplateId = questPacket.QuestId,
 				IsCleared = false,
 				OwnerDbId = player.PlayerDbId
 			};

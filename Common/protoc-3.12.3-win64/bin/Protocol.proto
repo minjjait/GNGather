@@ -27,8 +27,10 @@ enum MsgId {
   S_QUEST_LIST = 20;
   C_ADD_QUEST = 21;
   S_QUEST_CLEAR = 22;
-  C_TRANSFORTATION = 23;
-  S_TRANSFORTATION = 24;
+  S_REGION_ARRIVE = 23;
+  S_QUEST_SATISFIED = 24;
+  C_TRANSFORTATION = 25;
+  S_TRANSFORTATION = 26;
 }
 
 enum CreatureState {
@@ -141,11 +143,19 @@ message S_QuestList{
 }
 
 message C_AddQuest{
-  QuestInfo quest = 1;
+  int32 questId = 1;
 }
 
 message S_QuestClear{
   QuestInfo quest = 1;
+}
+
+message S_RegionArrive{
+ int32 regionId = 1;
+}
+
+message S_QuestSatisfied{
+ QuestInfo quest = 1;
 }
 
 message C_Transfortation{
@@ -181,6 +191,7 @@ message ItemInfo {
 }
 
 message QuestInfo{
-  int32 objectId = 1;
-  bool isCleared = 2;
+  int32 QuestDbId = 1;
+  int32 TemplateId = 2;
+  bool IsCleared = 3;
 }

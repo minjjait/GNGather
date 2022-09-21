@@ -156,6 +156,7 @@ class PacketHandler
 	{
 		S_AddItem addItemPacket = packet as S_AddItem;
 	}
+
 	public static void S_QuestListHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestList questListPacket = packet as S_QuestList;
@@ -164,9 +165,10 @@ class PacketHandler
 
 		foreach (QuestInfo quest in questListPacket.Quests)
 		{
-			Managers.Player.Quests.Add(quest.ObjectId, Managers.Data.QuestDict[quest.ObjectId]);
-			Managers.Player.QuestCleared[quest.ObjectId] = quest.IsCleared;
+			Managers.Player.Quests.Add(quest.TemplateId, Managers.Data.QuestDict[quest.TemplateId]);
+			Managers.Player.QuestCleared[quest.TemplateId] = quest.IsCleared;
 		}
+		Debug.Log(Managers.Player.Quests.Count);
 	}
 
 	//TODO
@@ -177,6 +179,7 @@ class PacketHandler
 	}
 
     #endregion
+
     //TODO
     public static void S_TransfortationHandler(PacketSession session, IMessage packet)
 	{
@@ -193,9 +196,17 @@ class PacketHandler
 		CreatureController cc = go.GetComponent<CreatureController>();
 		if (cc == null)
 			return;
-
 	}
 
-	
+	//TODO
+	public static void S_RegionArriveHandler(PacketSession session, IMessage packet)
+	{
+		S_RegionArrive regionArrivePacket = packet as S_RegionArrive;
+	}
 
+	//TODO
+	public static void S_QuestSatisfiedHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestSatisfied questSatisfiedPacket = packet as S_QuestSatisfied;
+	}
 }

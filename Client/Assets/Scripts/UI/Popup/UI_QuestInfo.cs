@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class UI_QuestInfo : UI_Popup
 {
     int _id = 9999;
-    Data.Quest _quest = null;
+    Data.QuestData _quest = null;
 
     enum Buttons
     {
@@ -50,7 +50,7 @@ public class UI_QuestInfo : UI_Popup
         GetButton((int)Buttons.CancelButton).gameObject.BindEvent(
             (PointerEventData evt) => { ClosePopupUI(); Managers.UI.OpenPopup = false; });
 
-        Data.Quest quest = null;
+        Data.QuestData quest = null;
         Managers.Player.Quests.TryGetValue(_id, out quest);
 
         //퀘스트 없을 시
@@ -85,7 +85,6 @@ public class UI_QuestInfo : UI_Popup
                     GetText((int)Texts.ClearText).text = "Quest Clear!";
                     GetButton((int)Buttons.ClearButton).gameObject.BindEvent(
                         (PointerEventData evt) => { QuestClear(); });
-
                 }
                 else//퀘스트 조건 불충족 시
                 {
@@ -103,10 +102,7 @@ public class UI_QuestInfo : UI_Popup
         //퀘스트 패킷 보내기(C_ADD_QUEST)
         //DB에 퀘스트 추가
         C_AddQuest questPacket = new C_AddQuest();
-        questPacket.Quest = new QuestInfo();
-        questPacket.Quest.ObjectId = _id;
-        questPacket.Quest.IsCleared = false;
-
+        questPacket.QuestId = _id;
         Managers.Network.Send(questPacket);
 
         GetButton((int)Buttons.YesButton).gameObject.SetActive(false);

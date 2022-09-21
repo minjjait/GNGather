@@ -14,12 +14,12 @@ namespace Server.Data
 	public class DataManager
 	{
 		public static Dictionary<int, Item> ItemDict { get; private set; } = new Dictionary<int, Item>();
-		public static Dictionary<int, Quest> QuestDict { get; private set; } = new Dictionary<int, Quest>();
+		public static Dictionary<int, QuestData> QuestDict { get; private set; } = new Dictionary<int, QuestData>();
 
 		public static void LoadData()
 		{
 			ItemDict = LoadJson<Data.ItemData, int, Data.Item>("ItemData").MakeDict();
-			QuestDict = LoadJson<Data.QuestData, int, Data.Quest>("QuestData").MakeDict();
+			QuestDict = LoadJson<Data.QuestLoader, int, Data.QuestData>("QuestData").MakeDict();
 		}
 
 		static Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>

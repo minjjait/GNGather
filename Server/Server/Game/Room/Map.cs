@@ -373,5 +373,4 @@ namespace Server.Game
 
 		#endregion
 	}
-
 }

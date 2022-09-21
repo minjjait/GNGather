@@ -123,6 +123,16 @@ class PacketHandler
 	{
 		S_QuestClear questClearPacket = packet as S_QuestClear;
 	}
+
+	public static void S_RegionArriveHandler(PacketSession session, IMessage packet)
+	{
+		S_RegionArrive regionArrivePacket = packet as S_RegionArrive;
+	}
+
+	public static void S_QuestSatisfiedHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestSatisfied questSatisfiedPacket = packet as S_QuestSatisfied;
+	}
 }
 
 

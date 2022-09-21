@@ -11,13 +11,14 @@ public interface ILoader<Key, Value>
 public class DataManager
 {
     public Dictionary<int, Data.Item> ItemDict { get; private set; } = new Dictionary<int, Data.Item>();
-    public Dictionary<int, Data.Quest> QuestDict  { get; private set; } = new Dictionary<int, Data.Quest>();
+    public Dictionary<int, Data.QuestData> QuestDict  { get; private set; } = new Dictionary<int, Data.QuestData>();
 
 	public void Init()
     {
-        ItemDict = LoadJson<Data.ItemData, int, Data.Item>("ItemData").MakeDict();
-        QuestDict = LoadJson<Data.QuestData, int, Data.Quest>("QuestData").MakeDict();
-	}
+        ItemDict = LoadJson<Data.ItemData, int, Data.Item>("ItemData").MakeDict(); 
+        QuestDict = LoadJson<Data.QuestLoader, int, Data.QuestData>("QuestData").MakeDict();
+
+    }
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
     {
