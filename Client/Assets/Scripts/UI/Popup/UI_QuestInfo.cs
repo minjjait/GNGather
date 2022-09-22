@@ -97,13 +97,16 @@ public class UI_QuestInfo : UI_Popup
 
     void AcceptQuest()
     {
-        Managers.Player.Quests.Add(_id, _quest);
+        bool success = Managers.Player.HaveUniqueQuest(_id, _quest);
 
         //퀘스트 패킷 보내기(C_ADD_QUEST)
         //DB에 퀘스트 추가
-        C_AddQuest questPacket = new C_AddQuest();
-        questPacket.QuestId = _id;
-        Managers.Network.Send(questPacket);
+        if (success)
+        {
+            C_AddQuest questPacket = new C_AddQuest();
+            questPacket.QuestId = _id;
+            Managers.Network.Send(questPacket);
+        }
 
         GetButton((int)Buttons.YesButton).gameObject.SetActive(false);
         GetButton((int)Buttons.NoButton).gameObject.SetActive(false);

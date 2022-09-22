@@ -165,10 +165,10 @@ class PacketHandler
 
 		foreach (QuestInfo quest in questListPacket.Quests)
 		{
-			Managers.Player.Quests.Add(quest.TemplateId, Managers.Data.QuestDict[quest.TemplateId]);
-			Managers.Player.QuestCleared[quest.TemplateId] = quest.IsCleared;
+			bool success = Managers.Player.HaveUniqueQuest(quest.TemplateId, Managers.Data.QuestDict[quest.TemplateId]);
+			if(success)
+				Managers.Player.QuestCleared[quest.TemplateId] = quest.IsCleared;
 		}
-		Debug.Log(Managers.Player.Quests.Count);
 	}
 
 	//TODO

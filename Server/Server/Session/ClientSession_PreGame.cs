@@ -107,7 +107,6 @@ namespace Server
 						.Where(q => q.OwnerDbId == playerInfo.PlayerDbId)
 						.ToList();
 
-
 					foreach(QuestDb questDb in quests)
                     {
 						Quest quest = Quest.MakeQuest(questDb);
