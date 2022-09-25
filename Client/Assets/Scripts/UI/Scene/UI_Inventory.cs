@@ -9,16 +9,22 @@ public class UI_Inventory : UI_Base
     {
         InventoryBackground
     }
+
     public override void Init()
     {
         Bind<GameObject>(typeof(GameObjects));
 
-        for(int i = 0; i < 18; i++)
+        RefreshUI();
+    }
+
+    public void RefreshUI()
+    {
+        for (int i = 0; i < 18; i++)
         {
             GetObject((int)GameObjects.InventoryBackground).transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        for(int i = 0; i< Managers.Player.Items.Count; i++)
+        for (int i = 0; i < Managers.Player.Items.Count; i++)
         {
             GetObject((int)GameObjects.InventoryBackground).transform.GetChild(i).gameObject.SetActive(true);
         }

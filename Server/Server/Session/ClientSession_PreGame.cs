@@ -124,7 +124,8 @@ namespace Server
 
 				Send(questListPacket);
 
-				/*
+				S_ItemList itemListPacket = new S_ItemList();
+
 				// 아이템 목록을 갖고 온다
 				using (AppDbContext db = new AppDbContext())
 				{
@@ -134,20 +135,16 @@ namespace Server
 
 					foreach (ItemDb itemDb in items)
 					{
-						Item item = Item.MakeItem(itemDb);
-						if (item != null)
-						{
-							MyPlayer.Inven.Add(item);
+						if (DataManager.ItemDict.ContainsKey(itemDb.TemplateId) == false)
+							return;
 
-							ItemInfo info = new ItemInfo();
-							info.MergeFrom(item.Info);
-							itemListPacket.Items.Add(info);
-						}
+						MyPlayer.Items.Add(itemDb.TemplateId, DataManager.ItemDict[itemDb.TemplateId]);
+
+						itemListPacket.ItemIds.Add(itemDb.TemplateId);
 					}
 				}
 
 				Send(itemListPacket);
-				*/
 			}
 
 			ServerState = PlayerServerState.ServerStateGame;

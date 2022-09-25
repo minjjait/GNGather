@@ -38,7 +38,7 @@ public class MapManager
 	public int SizeX { get { return MaxX - MinX + 1; } }
 	public int SizeY { get { return MaxY - MinY + 1; } }
 
-	bool[,] _collision;
+	int[,] _collision;
 
 	public bool CanGo(Vector3Int cellPos)
 	{
@@ -49,7 +49,15 @@ public class MapManager
 
 		int x = cellPos.x - MinX;
 		int y = MaxY - cellPos.y;
-		return !_collision[y, x];
+		if(_collision[y, x] == 999)
+        {
+			return false;
+        }
+        else
+        {
+			Managers.Player.RegionId = _collision[y, x];
+			return true;
+        }
 	}
 
 	public void LoadMap(int mapId)
@@ -77,25 +85,14 @@ public class MapManager
 
 		int xCount = MaxX - MinX + 1;
 		int yCount = MaxY - MinY + 1;
-		_collision = new bool[yCount, xCount];
-		/*
-		for(int y = 0; y < yCount; y++)
-		{
-			string line = reader.ReadLine();
-			string[] lines = line.Split(new char[] { ' ' });
-			foreach(string li in lines)
-            {
-				Debug.Log(li);
-            }
-		}
-		*/
+		_collision = new int[yCount, xCount];
 		for (int y = 0; y < yCount; y++)
 		{
 			string line = reader.ReadLine();
-			
-			for (int x = 0; x < xCount; x++)
+			string[] lines = line.Split(new char[] { ' ' });
+			for (int x = 0; x < lines.Length - 1; x++)
 			{
-				_collision[y, x] = (line[x] == '1' ? true : false);
+				_collision[y, x] = Int32.Parse(lines[x]);
 			}
 		}
 	}

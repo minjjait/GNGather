@@ -47,14 +47,10 @@ class PacketManager
 		_handler.Add((ushort)MsgId.SInteractionFestival, PacketHandler.S_InteractionFestivalHandler);		
 		_onRecv.Add((ushort)MsgId.SItemList, MakePacket<S_ItemList>);
 		_handler.Add((ushort)MsgId.SItemList, PacketHandler.S_ItemListHandler);		
-		_onRecv.Add((ushort)MsgId.SAddItem, MakePacket<S_AddItem>);
-		_handler.Add((ushort)MsgId.SAddItem, PacketHandler.S_AddItemHandler);		
 		_onRecv.Add((ushort)MsgId.SQuestList, MakePacket<S_QuestList>);
 		_handler.Add((ushort)MsgId.SQuestList, PacketHandler.S_QuestListHandler);		
 		_onRecv.Add((ushort)MsgId.SQuestClear, MakePacket<S_QuestClear>);
 		_handler.Add((ushort)MsgId.SQuestClear, PacketHandler.S_QuestClearHandler);		
-		_onRecv.Add((ushort)MsgId.SRegionArrive, MakePacket<S_RegionArrive>);
-		_handler.Add((ushort)MsgId.SRegionArrive, PacketHandler.S_RegionArriveHandler);		
 		_onRecv.Add((ushort)MsgId.SQuestSatisfied, MakePacket<S_QuestSatisfied>);
 		_handler.Add((ushort)MsgId.SQuestSatisfied, PacketHandler.S_QuestSatisfiedHandler);		
 		_onRecv.Add((ushort)MsgId.STransfortation, MakePacket<S_Transfortation>);

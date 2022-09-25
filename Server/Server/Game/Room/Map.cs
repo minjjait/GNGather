@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 
 namespace Server.Game
 {
@@ -92,7 +93,7 @@ namespace Server.Game
 		public int SizeX { get { return MaxX - MinX + 1; } }
 		public int SizeY { get { return MaxY - MinY + 1; } }
 
-		bool[,] _collision;
+		int[,] _collision;
 		GameObject[,] _objects;
 
 		public bool CanGo(Vector2Int cellPos, bool checkObjects = true)
@@ -104,7 +105,18 @@ namespace Server.Game
 
 			int x = cellPos.x - MinX;
 			int y = MaxY - cellPos.y;
-			return !_collision[y, x] && (!checkObjects || _objects[y, x] == null);
+
+			bool collision;
+
+			if(_collision[y, x] == 999)
+            {
+				collision = false;
+            }
+            else
+            {
+				collision = true;
+            }
+			return collision && (!checkObjects || _objects[y, x] == null);
 		}
 
 		public GameObject Find(Vector2Int cellPos)
@@ -207,15 +219,16 @@ namespace Server.Game
 
 			int xCount = MaxX - MinX + 1;
 			int yCount = MaxY - MinY + 1;
-			_collision = new bool[yCount, xCount];
+			_collision = new int[yCount, xCount];
 			_objects = new GameObject[yCount, xCount];
 
 			for (int y = 0; y < yCount; y++)
 			{
 				string line = reader.ReadLine();
-				for (int x = 0; x < xCount; x++)
+				string[] lines = line.Split(new char[] { ' ' });
+				for (int x = 0; x < lines.Length - 1; x++)
 				{
-					_collision[y, x] = (line[x] == '1' ? true : false);
+					_collision[y, x] = Int32.Parse(lines[x]);
 				}
 			}
 		}

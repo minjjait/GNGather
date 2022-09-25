@@ -118,11 +118,11 @@ public class UI_QuestInfo : UI_Popup
 
     void QuestClear()
     {
-        //TODO
         //퀘스트 패킷 보내기(C_QUEST_CLEAR)
         //클리어했다고 DB 추가
-        Managers.Player.Items.Add(_id, Managers.Data.ItemDict[_id]);
-        Managers.Player.QuestCleared[_id] = true;
+        C_QuestClear questClearPacket = new C_QuestClear();
+        questClearPacket.QuestId = _id;
+        Managers.Network.Send(questClearPacket);
 
         //아이템 획득 팝업 띄울 것인가?!
         GetText((int)Texts.ClearText).text = "이미 클리어한 퀘스트입니다";

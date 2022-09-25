@@ -23,14 +23,13 @@ enum MsgId {
   C_INTERACTION_FESTIVAL = 16;
   S_INTERACTION_FESTIVAL = 17;
   S_ITEM_LIST = 18;
-  S_ADD_ITEM = 19;
-  S_QUEST_LIST = 20;
-  C_ADD_QUEST = 21;
+  S_QUEST_LIST = 19;
+  C_ADD_QUEST = 20;
+  C_QUEST_CLEAR = 21;
   S_QUEST_CLEAR = 22;
-  S_REGION_ARRIVE = 23;
-  S_QUEST_SATISFIED = 24;
-  C_TRANSFORTATION = 25;
-  S_TRANSFORTATION = 26;
+  S_QUEST_SATISFIED = 23;
+  C_TRANSFORTATION = 24;
+  S_TRANSFORTATION = 25;
 }
 
 enum CreatureState {
@@ -73,7 +72,8 @@ message S_Despawn {
 }
 
 message C_Move {
-  PositionInfo posInfo = 1;
+  int32 regionId = 1;
+  PositionInfo posInfo = 2;
 }
 
 message S_Move {
@@ -131,11 +131,7 @@ message S_InteractionFestival{
 }
 
 message S_ItemList{
-  repeated ItemInfo items = 1;
-}
-
-message S_AddItem{
-  ItemInfo item = 1;
+  repeated int32 itemIds = 1;
 }
 
 message S_QuestList{
@@ -146,12 +142,12 @@ message C_AddQuest{
   int32 questId = 1;
 }
 
-message S_QuestClear{
-  QuestInfo quest = 1;
+message C_QuestClear{
+  int32 questId = 1;
 }
 
-message S_RegionArrive{
- int32 regionId = 1;
+message S_QuestClear{
+  int32 itemId = 1;
 }
 
 message S_QuestSatisfied{
@@ -183,11 +179,6 @@ message PositionInfo {
   MoveDir moveDir = 2;
   int32 posX = 3;
   int32 posY = 4;
-}
-
-message ItemInfo {
-  int32 itemDbId = 1;
-  int32 templateId = 2;
 }
 
 message QuestInfo{

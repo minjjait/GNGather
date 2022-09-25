@@ -29,6 +29,15 @@ public class MapEditor
 		foreach (GameObject go in gameObjects)
 		{
 			Tilemap tmBase = Util.FindChild<Tilemap>(go, "Tilemap_Base", true);
+
+			//지역생성
+			Transform regions = go.transform.GetChild(1);
+			Tilemap[] tmRegion = new Tilemap[42];
+			for(int i = 0; i < regions.childCount; i++)
+            {
+				tmRegion[i] = regions.GetChild(i).GetComponent<Tilemap>();
+            }
+
 			Tilemap tm = Util.FindChild<Tilemap>(go, "Tilemap_Collision", true);
 			
 			using (var writer = File.CreateText($"{pathPrefix }/{go.name}.txt"))
@@ -42,11 +51,34 @@ public class MapEditor
 				{
 					for (int x = tmBase.cellBounds.xMin; x <= tmBase.cellBounds.xMax; x++)
 					{
+						bool haveTile = false;
 						TileBase tile = tm.GetTile(new Vector3Int(x, y, 0));
+
+						TileBase[] regionTiles = new TileBase[42];
+						{//지역 타일 획득
+							for (int i = 0; i < tmRegion.Length; i++)
+                            {
+								regionTiles[i] = tmRegion[i].GetTile(new Vector3Int(x, y, 0));
+                            }
+                        }
+
 						if (tile != null)
-							writer.Write("1");
-						else
-							writer.Write("0");
+							writer.Write("999 ");
+                        else
+                        {
+							for(int i = 0; i < regionTiles.Length; i++)
+                            {
+								if(regionTiles[i] != null)
+                                {
+									writer.Write(tmRegion[i].name + " ");
+									haveTile = true;
+									break;
+                                }
+                            }
+							if (haveTile == false)
+								writer.Write("0 ");
+
+						}
 					}
 					writer.WriteLine();
 				}

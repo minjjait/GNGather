@@ -145,16 +145,19 @@ class PacketHandler
 	}
 
     #region QUEST&ITEM
-    //TODO
     public static void S_ItemListHandler(PacketSession session, IMessage packet)
 	{
 		S_ItemList itemListPacket = packet as S_ItemList;
-	}
 
-	//TODO
-	public static void S_AddItemHandler(PacketSession session, IMessage packet)
-	{
-		S_AddItem addItemPacket = packet as S_AddItem;
+		Managers.Player.Items.Clear();
+
+		foreach(int itemId in itemListPacket.ItemIds)
+        {
+            if (Managers.Player.Items.ContainsKey(itemId) == false)
+            {
+				Managers.Player.Items.Add(itemId, Managers.Data.ItemDict[itemId]);
+            }
+        }
 	}
 
 	public static void S_QuestListHandler(PacketSession session, IMessage packet)
@@ -171,17 +174,27 @@ class PacketHandler
 		}
 	}
 
-	//TODO
+	public static void S_QuestSatisfiedHandler(PacketSession session, IMessage packet)
+	{
+		S_QuestSatisfied questSatisfiedPacket = packet as S_QuestSatisfied;
+
+        if (Managers.Player.Quests.ContainsKey(questSatisfiedPacket.Quest.TemplateId))
+        {
+			Managers.Player.QuestCleared[questSatisfiedPacket.Quest.TemplateId] = true;
+        }
+	}
 	public static void S_QuestClearHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestClear questClearPacket = packet as S_QuestClear;
 
+		Managers.Player.Items.Add(questClearPacket.ItemId, Managers.Data.ItemDict[questClearPacket.ItemId]);
 	}
 
-    #endregion
 
-    //TODO
-    public static void S_TransfortationHandler(PacketSession session, IMessage packet)
+	#endregion
+
+	//TODO
+	public static void S_TransfortationHandler(PacketSession session, IMessage packet)
 	{
 		S_Transfortation transPacket = packet as S_Transfortation;
 
@@ -196,17 +209,5 @@ class PacketHandler
 		CreatureController cc = go.GetComponent<CreatureController>();
 		if (cc == null)
 			return;
-	}
-
-	//TODO
-	public static void S_RegionArriveHandler(PacketSession session, IMessage packet)
-	{
-		S_RegionArrive regionArrivePacket = packet as S_RegionArrive;
-	}
-
-	//TODO
-	public static void S_QuestSatisfiedHandler(PacketSession session, IMessage packet)
-	{
-		S_QuestSatisfied questSatisfiedPacket = packet as S_QuestSatisfied;
-	}
+	}	
 }

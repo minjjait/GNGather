@@ -37,6 +37,8 @@ namespace Server.Game
 			resMovePacket.PosInfo = movePacket.PosInfo;
 
 			Broadcast(player.CellPos, resMovePacket);
+
+			DbTransaction.QuestSatisfied(player, movePacket);
 		}
 
 		public void HandleSpeechBubble(Player player, C_SpeechBubble speechPacket)
@@ -90,5 +92,17 @@ namespace Server.Game
 
 			DbTransaction.QuestAccept(player, room, questPacket);
         }
+
+		public void HandleQuestClear(Player player, GameRoom room, C_QuestClear questClearPacket)
+		{
+			if (player == null)
+				return;
+
+			//이미 아이템이 있으면 리턴
+			if (player.Items.ContainsKey(questClearPacket.QuestId))
+				return;
+
+			DbTransaction.QuestClear(player, room, questClearPacket);
+		}
 	}
 }

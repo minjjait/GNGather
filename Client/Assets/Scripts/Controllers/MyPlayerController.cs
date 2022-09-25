@@ -64,16 +64,19 @@ public class MyPlayerController : PlayerController
 		//인벤토리
         if (Input.GetKeyDown(KeyCode.I))
         {
-			if (_questNPC == null)
-				return;
-
 			UI_GameScene gameScene = Managers.UI.SceneUI as UI_GameScene;
 			UI_Inventory inventoryUI = gameScene.InventoryUI;
 
-			//패킷 보내고
-			//내가 현재 가지고 있는 아이템 목록을 긁어서 서버에서 패킷을 보낸다
-			//패킷을 받으면 인벤토리 setActive true하고 있는 아이템만 표출하고 나머지 setActive false
-        }
+			if (inventoryUI.gameObject.activeSelf)
+			{
+				inventoryUI.gameObject.SetActive(false);
+			}
+			else
+			{
+				inventoryUI.gameObject.SetActive(true);
+				inventoryUI.RefreshUI();
+			}
+		}
 
 		//채팅
 		if (Input.GetKeyDown(KeyCode.Return))
@@ -204,6 +207,7 @@ public class MyPlayerController : PlayerController
 		{
 			C_Move movePacket = new C_Move();
 			movePacket.PosInfo = PosInfo;
+			movePacket.RegionId = Managers.Player.RegionId;
 			Managers.Network.Send(movePacket);
 			_updated = false;
 		}
