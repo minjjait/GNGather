@@ -1,0 +1,112 @@
+{
+  "regionPositions": [
+    {
+      "id": "1",
+      "regionName": "진주",
+      "posX": "-10.5",
+      "posY": "-82.5"
+    },
+    {
+      "id": "2",
+      "regionName": "거창",
+      "posX": "-36.5",
+      "posY": "55.5"
+    },
+    {
+      "id": "3",
+      "regionName": "함양",
+      "posX": "-77.5",
+      "posY": "23.5"
+    },
+    {
+      "id": "4",
+      "regionName": "합천",
+      "posX": "-2.5",
+      "posY": "10.5"
+    },
+    {
+      "id": "5",
+      "regionName": "산청",
+      "posX": "-43.5",
+      "posY": "-25.5"
+    },
+    {
+      "id": "6",
+      "regionName": "하동",
+      "posX": "-87.5",
+      "posY": "-103.5"
+    },
+    {
+      "id": "7",
+      "regionName": "남해",
+      "posX": "-56.5",
+      "posY": "-158.5"
+    },
+    {
+      "id": "8",
+      "regionName": "사천",
+      "posX": "-28.5",
+      "posY": "-110.5"
+    },
+    {
+      "id": "9",
+      "regionName": "고성",
+      "posX": "25.5",
+      "posY": "-131.5"
+    },
+    {
+      "id": "10",
+      "regionName": "의령",
+      "posX": "24.5",
+      "posY": "-31.5"
+    },
+    {
+      "id": "11",
+      "regionName": "함안",
+      "posX": "53.5",
+      "posY": "-58.5"
+    },
+    {
+      "id": "12",
+      "regionName": "창녕",
+      "posX": "79.5",
+      "posY": "-2.5"
+    },
+    {
+      "id": "13",
+      "regionName": "밀양",
+      "posX": "141.5",
+      "posY": "-16.5"
+    },
+    {
+      "id": "14",
+      "regionName": "창원",
+      "posX": "99.5",
+      "posY": "-62.5"
+    },
+    {
+      "id": "15",
+      "regionName": "거제",
+      "posX": "97.5",
+      "posY": "-153.5"
+    },
+    {
+      "id": "16",
+      "regionName": "김해",
+      "posX": "171.5",
+      "posY": "-50.5"
+    },
+    {
+      "id": "17",
+      "regionName": "양산",
+      "posX": "188.5",
+      "posY": "-23.5"
+    },
+    {
+      "id": "18",
+      "regionName": "통영",
+      "posX": "66.5",
+      "posY": "-154.5"
+    }
+  ]
+} 

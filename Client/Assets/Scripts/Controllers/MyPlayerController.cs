@@ -9,7 +9,6 @@ public class MyPlayerController : PlayerController
 {
 	NPCBoundary _festivalNPC = null;
 	NPCBoundary _questNPC = null;
-	NPCBoundary _transfortationNPC = null;
 
 	bool _moveKeyPressed = false;
 	bool _doConversation = false;
@@ -108,6 +107,22 @@ public class MyPlayerController : PlayerController
             }
 		}
 
+		//미니맵 및 설정 창
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			UI_GameScene gameScene = Managers.UI.SceneUI as UI_GameScene;
+			UI_Transfortation transfortation = gameScene.TransfortationUI;
+
+			if (transfortation.gameObject.activeSelf)
+			{
+				transfortation.gameObject.SetActive(false);
+			}
+			else
+			{
+				transfortation.gameObject.SetActive(true);
+			}
+		}
+
 		//상호작용
 		if (Input.GetKeyDown(KeyCode.F))
 		{
@@ -123,11 +138,6 @@ public class MyPlayerController : PlayerController
 				Managers.UI.OpenPopup = true;
 				Managers.Player.QuestNPCId = _questNPC.Id;
 				UI_QuestInfo quest = Managers.UI.ShowPopupUI<UI_QuestInfo>();
-			}
-
-			if (_transfortationNPC != null)
-			{
-				Debug.Log("버스 인터렉션");
 			}
 		}
 
@@ -223,10 +233,6 @@ public class MyPlayerController : PlayerController
 		{
 			_questNPC = collision.gameObject.GetComponent<NPCBoundary>();
 		}
-		else if (collision.tag == "TransfortationNPC")
-		{
-			_transfortationNPC = collision.gameObject.GetComponent<NPCBoundary>();
-		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
@@ -238,10 +244,6 @@ public class MyPlayerController : PlayerController
 		else if (collision.tag == "QuestNPC")
 		{
 			_questNPC = null;
-		}
-		else if (collision.tag == "TransfortationNPC")
-		{
-			_transfortationNPC = null;
 		}
 	}
 }

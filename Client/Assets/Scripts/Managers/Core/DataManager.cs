@@ -12,11 +12,13 @@ public class DataManager
 {
     public Dictionary<int, Data.Item> ItemDict { get; private set; } = new Dictionary<int, Data.Item>();
     public Dictionary<int, Data.QuestData> QuestDict  { get; private set; } = new Dictionary<int, Data.QuestData>();
+    public Dictionary<int, Data.RegionPos> RegionPosDict  { get; private set; } = new Dictionary<int, Data.RegionPos>();
 
 	public void Init()
     {
         ItemDict = LoadJson<Data.ItemData, int, Data.Item>("ItemData").MakeDict(); 
         QuestDict = LoadJson<Data.QuestLoader, int, Data.QuestData>("QuestData").MakeDict();
+        RegionPosDict = LoadJson<Data.RegionPosData, int, Data.RegionPos>("RegionPosData").MakeDict();
 
     }
 

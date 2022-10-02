@@ -54,4 +54,29 @@ namespace Data
 		}
 	}
 	#endregion
+
+	#region RegionPos
+	[Serializable]
+	public class RegionPos
+	{
+		public int id;
+		public string regionName;
+		public float posX;
+		public float posY;
+	}
+
+	[Serializable]
+	public class RegionPosData : ILoader<int, RegionPos>
+	{
+		public List<RegionPos> regionPositions = new List<RegionPos>();
+
+		public Dictionary<int, RegionPos> MakeDict()
+		{
+			Dictionary<int, RegionPos> dict = new Dictionary<int, RegionPos>();
+			foreach (RegionPos regionPos in regionPositions)
+				dict.Add(regionPos.id, regionPos);
+			return dict;
+		}
+	}
+    #endregion
 }

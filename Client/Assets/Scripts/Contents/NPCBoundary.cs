@@ -18,17 +18,21 @@ public class NPCBoundary : MonoBehaviour
     {
         if(collision.gameObject.tag == "MyPlayer")
         {
+            if (Id == 9999)
+                return;
+
+            string regionName = Managers.Data.RegionPosDict[Id].regionName;
             if(gameObject.tag == "FestivalNPC")
             {
-                _bc.Chat = $"{Id}번 NPC입니다~~";
+                _bc.Chat = $"{regionName} NPC입니다~~";
             }
             else if (gameObject.tag == "QuestNPC")
             {
-                _bc.Chat = $"{Id}번 퀘스트 NPC입니다~~";
+                _bc.Chat = $"{regionName} 퀘스트 NPC입니다~~";
             }
             else if (gameObject.tag == "TransfortationNPC")
             {
-                _bc.Chat = $"{Id}번 버스 NPC입니다~~";
+                _bc.Chat = $"이 곳은 {regionName}입니다";
             }
         }
     }
