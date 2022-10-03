@@ -61,8 +61,8 @@ namespace Data
 	{
 		public int id;
 		public string regionName;
-		public float posX;
-		public float posY;
+		public int posX;
+		public int posY;
 	}
 
 	[Serializable]

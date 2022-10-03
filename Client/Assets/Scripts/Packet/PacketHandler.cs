@@ -192,22 +192,4 @@ class PacketHandler
 
 
 	#endregion
-
-	//TODO
-	public static void S_TransfortationHandler(PacketSession session, IMessage packet)
-	{
-		S_Transfortation transPacket = packet as S_Transfortation;
-
-		GameObject go = Managers.Object.FindById(transPacket.ObjectId);
-
-		if (go == null)
-			return;
-
-		if (Managers.Object.MyPlayer.Id == transPacket.ObjectId)
-			return;
-
-		CreatureController cc = go.GetComponent<CreatureController>();
-		if (cc == null)
-			return;
-	}	
 }

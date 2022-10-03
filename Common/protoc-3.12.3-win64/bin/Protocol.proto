@@ -28,8 +28,6 @@ enum MsgId {
   C_QUEST_CLEAR = 21;
   S_QUEST_CLEAR = 22;
   S_QUEST_SATISFIED = 23;
-  C_TRANSFORTATION = 24;
-  S_TRANSFORTATION = 25;
 }
 
 enum CreatureState {
@@ -152,15 +150,6 @@ message S_QuestClear{
 
 message S_QuestSatisfied{
  QuestInfo quest = 1;
-}
-
-message C_Transfortation{
-  PositionInfo posInfo = 1;
-}
-
-message S_Transfortation{
-  int32 objectId = 1;
-  PositionInfo posInfo = 2;
 }
 
 message LobbyPlayerInfo {

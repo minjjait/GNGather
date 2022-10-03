@@ -16,7 +16,7 @@ class PacketHandler
 		C_Move movePacket = packet as C_Move;
 		ClientSession clientSession = session as ClientSession;
 
-		//Console.WriteLine($"C_Move ({movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY})");
+		Console.WriteLine($"C_Move ({movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY})");
 
 		Player player = clientSession.MyPlayer;
 		if (player == null)
@@ -119,22 +119,4 @@ class PacketHandler
 
 		room.Push(room.HandleQuestClear, player, room, questClear);
 	}
-	public static void C_TransfortationHandler(PacketSession session, IMessage packet)
-	{
-		C_Transfortation transPacket = packet as C_Transfortation;
-		ClientSession clientSession = session as ClientSession;
-
-		//Console.WriteLine($"C_Move ({movePacket.PosInfo.PosX}, {movePacket.PosInfo.PosY})");
-
-		Player player = clientSession.MyPlayer;
-		if (player == null)
-			return;
-
-		GameRoom room = player.Room;
-		if (room == null)
-			return;
-
-		//room.Push(room.HandleMove, player, movePacket);
-	}
-
 }

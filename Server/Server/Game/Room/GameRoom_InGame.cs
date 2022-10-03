@@ -13,7 +13,7 @@ namespace Server.Game
 	{
 		public void HandleMove(Player player, C_Move movePacket)
 		{
-			if (player == null)
+            if (player == null)
 				return;
 
 			// TODO : 검증

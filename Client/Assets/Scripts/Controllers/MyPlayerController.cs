@@ -21,6 +21,9 @@ public class MyPlayerController : PlayerController
 	// 키보드 입력
 	protected override void UpdateController()
 	{
+		if (Managers.Player.UsingTransfortation)
+			return;
+
 		if (Managers.UI.OpenPopup)
 			return;
 
@@ -211,7 +214,7 @@ public class MyPlayerController : PlayerController
 		CheckUpdatedFlag();
 	}
 
-	protected override void CheckUpdatedFlag()
+	public void CheckUpdatedFlag()
 	{
 		if (_updated)
 		{

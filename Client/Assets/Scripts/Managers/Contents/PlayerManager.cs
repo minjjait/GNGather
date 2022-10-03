@@ -10,6 +10,7 @@ public class PlayerManager
     public bool[] QuestCleared { get; set; } = new bool[19];
     public int QuestNPCId { get; set; }
     public int RegionId { get; set; }
+    public bool UsingTransfortation { get; set; } = false;
 
     public bool HaveUniqueQuest(int id, QuestData quest)
     {

@@ -74,8 +74,4 @@ public class PlayerController : CreatureController
 		base.UpdateController();
 	}
 
-	protected virtual void CheckUpdatedFlag()
-	{
-
-	}
 }

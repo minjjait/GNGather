@@ -28,4 +28,12 @@ public class UI_GameScene : UI_Scene
         InventoryUI.gameObject.SetActive(false);
         TransfortationUI.gameObject.SetActive(false);
     }
+
+    public void CloseAll()
+    {
+        ConversationUI.gameObject.SetActive(false);
+        InventoryUI.gameObject.SetActive(false);
+        TransfortationUI.gameObject.SetActive(false);
+
+    }
 }
