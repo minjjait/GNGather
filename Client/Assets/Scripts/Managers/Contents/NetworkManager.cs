@@ -9,7 +9,9 @@ using Google.Protobuf;
 public class NetworkManager
 {
 	public int AccountId { get; set; }
+	public string UniqueId { get; set; }
 	public int Token { get; set; }
+	
 
 	ServerSession _session = new ServerSession();
 
@@ -40,5 +42,4 @@ public class NetworkManager
 				handler.Invoke(_session, packet.Message);
 		}	
 	}
-
 }

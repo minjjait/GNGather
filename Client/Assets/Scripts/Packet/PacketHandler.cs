@@ -61,8 +61,8 @@ class PacketHandler
 		Debug.Log("S_ConnectedHandler");
 		C_Login loginPacket = new C_Login();
 
-		string path = Application.dataPath;
-		loginPacket.UniqueId = path.GetHashCode().ToString();
+		loginPacket.UniqueId = Managers.Network.UniqueId;
+		Debug.Log(loginPacket.UniqueId);
 		Managers.Network.Send(loginPacket);
 	}
 
