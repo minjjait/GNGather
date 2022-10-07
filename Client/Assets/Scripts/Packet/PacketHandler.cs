@@ -62,7 +62,6 @@ class PacketHandler
 		C_Login loginPacket = new C_Login();
 
 		loginPacket.UniqueId = Managers.Network.UniqueId;
-		Debug.Log(loginPacket.UniqueId);
 		Managers.Network.Send(loginPacket);
 	}
 
