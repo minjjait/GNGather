@@ -42,7 +42,7 @@ public class UI_LoginScene : UI_Scene
 		string account = Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text;
         if (regexId.IsMatch(account) == false)
         {
-			Debug.Log("잘못된 아이디 형식입니당 숫자,영어를 포함한 5~15사이의문자열로 적으세용");
+			Debug.Log("잘못된 아이디 형식입니당 숫자,영어를 포함한 5~15사이의 문자열로 적으세용");
 			return;
         }
 		
