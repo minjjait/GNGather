@@ -180,11 +180,17 @@ class PacketHandler
         if (Managers.Player.Quests.ContainsKey(questSatisfiedPacket.Quest.TemplateId))
         {
 			Managers.Player.QuestCleared[questSatisfiedPacket.Quest.TemplateId] = true;
+
+
         }
 	}
 	public static void S_QuestClearHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestClear questClearPacket = packet as S_QuestClear;
+
+		UI_GameScene gameSceneUI = Managers.UI.SceneUI as UI_GameScene;
+		UI_Error errorUI = gameSceneUI.ErrorUI;
+		errorUI.SetErrorMessage("퀘스트가 완료되었습니다!");
 
 		Managers.Player.Items.Add(questClearPacket.ItemId, Managers.Data.ItemDict[questClearPacket.ItemId]);
 	}

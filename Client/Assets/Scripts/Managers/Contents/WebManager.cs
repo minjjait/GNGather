@@ -34,7 +34,9 @@ public class WebManager
 			yield return uwr.SendWebRequest();
 			if (uwr.result == UnityWebRequest.Result.ConnectionError || uwr.result == UnityWebRequest.Result.ProtocolError)
 			{
-				Debug.Log(uwr.error);
+				UI_LoginScene loginSceneUI = Managers.UI.SceneUI as UI_LoginScene;
+				UI_Error errorUI = loginSceneUI.ErrorUI;
+				errorUI.SetErrorMessage(uwr.error);
 			}
 			else
 			{

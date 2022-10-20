@@ -16,6 +16,7 @@ INSERT INTO Region (RegionName) VALUES (N'거제')
 INSERT INTO Region (RegionName) VALUES (N'김해')
 INSERT INTO Region (RegionName) VALUES (N'양산')
 INSERT INTO Region (RegionName) VALUES (N'통영')
+
 INSERT INTO Festival (FestivalName, RegionDbId, FestivalExplain, RelatedAddress) 
                  VALUES (N'진주유등축제', 1, N'임진왜란 진주성전투에서 왜군이 강을 건너는 것을 저지하고 가족에게 안부를 전하기 위해 남강에 유등을 띄운 데에서 유래된 축제이다. 문화체육관광부 지정 대한민국 대표축제였고 5년 연속 대한민국 글로벌 육성 축제로 선정되었으며, 해외로 진출하는 명품축제이다.', 'https://yudeung.com/origin');
 INSERT INTO Festival (FestivalName, RegionDbId, FestivalExplain, RelatedAddress) 

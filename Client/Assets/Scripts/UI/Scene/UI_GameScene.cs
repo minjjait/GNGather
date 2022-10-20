@@ -8,6 +8,7 @@ public class UI_GameScene : UI_Scene
     public UI_Conversation ConversationUI { get; private set; }
     public UI_Inventory InventoryUI { get; private set; }
     public UI_Transfortation TransfortationUI { get; private set; }
+    public UI_Error ErrorUI { get; private set; }
 
     enum GameObjects
     {
@@ -23,10 +24,12 @@ public class UI_GameScene : UI_Scene
         ConversationUI = GetComponentInChildren<UI_Conversation>();
         InventoryUI = GetComponentInChildren<UI_Inventory>();
         TransfortationUI = GetComponentInChildren<UI_Transfortation>();
+        ErrorUI = GetComponentInChildren<UI_Error>();
 
         ConversationUI.gameObject.SetActive(false);
         InventoryUI.gameObject.SetActive(false);
         TransfortationUI.gameObject.SetActive(false);
+        ErrorUI.gameObject.SetActive(false);
     }
 
     public void CloseAll()
@@ -34,6 +37,7 @@ public class UI_GameScene : UI_Scene
         ConversationUI.gameObject.SetActive(false);
         InventoryUI.gameObject.SetActive(false);
         TransfortationUI.gameObject.SetActive(false);
+        ErrorUI.gameObject.SetActive(false);
 
     }
 }
