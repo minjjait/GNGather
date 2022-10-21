@@ -11,6 +11,7 @@ public class PlayerManager
     public int QuestNPCId { get; set; }
     public int RegionId { get; set; }
     public bool UsingTransfortation { get; set; } = false;
+    public int ErrorNum { get; set; } = 0;
 
     public bool HaveUniqueQuest(int id, QuestData quest)
     {

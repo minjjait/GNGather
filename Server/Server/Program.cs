@@ -97,7 +97,7 @@ namespace Server
 			t.Start();
 		}
 
-		public static string Name { get; } = "데포르쥬";
+		public static string Name { get; } = "경남소프";
 		public static int Port { get; } = 7777;
 		public static string IpAddress { get; set; }
 

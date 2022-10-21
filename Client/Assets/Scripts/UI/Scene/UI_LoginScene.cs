@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 
 public class UI_LoginScene : UI_Scene
 {
+	public UI_Error ErrorUI { get; private set; }
 	//숫자,영어를 포함한 5~15사이의문자열
 	Regex regexId = new Regex(@"^[0-9a-zA-Z]{5,15}$");
 	//영대,소, 숫자, 특수문자 1개이상을 포함한 비밀번호 8~20자
@@ -33,6 +34,10 @@ public class UI_LoginScene : UI_Scene
 		Bind<GameObject>(typeof(GameObjects));
 		Bind<Image>(typeof(Images));
 
+		ErrorUI = GetComponentInChildren<UI_Error>();
+
+		ErrorUI.gameObject.SetActive(false);
+
 		GetImage((int)Images.CreateBtn).gameObject.BindEvent(OnClickCreateButton);
 		GetImage((int)Images.LoginBtn).gameObject.BindEvent(OnClickLoginButton);
 	}
@@ -42,14 +47,14 @@ public class UI_LoginScene : UI_Scene
 		string account = Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text;
         if (regexId.IsMatch(account) == false)
         {
-			Debug.Log("잘못된 아이디 형식입니당 숫자,영어를 포함한 5~15사이의 문자열로 적으세용");
+			ErrorUI.SetErrorMessage("숫자,영어를 포함한 5~15사이의 문자열로 아이디를 적어주세요.");
 			return;
         }
 		
 		string password = Get<GameObject>((int)GameObjects.Password).GetComponent<InputField>().text;
         if (regexPassword.IsMatch(password) == false)
         {
-			Debug.Log("잘못된 비밀번호 형식입니당 영대,소, 숫자, 특수문자 1개이상을 포함한 비밀번호 8~20자");
+			ErrorUI.SetErrorMessage("영대,소, 숫자, 특수문자 1개이상을 포함한 비밀번호 8~20자를 입력해주세요.");
 			return;
         }
 
@@ -64,8 +69,8 @@ public class UI_LoginScene : UI_Scene
 		Managers.Web.SendPostRequest<CreateAccountPacketRes>("account/create", packet, (res) =>
 		{
 			if(res.CreateOk == false)
-            {
-				Debug.Log("동일한 아이디가 있습니다");
+			{
+				ErrorUI.SetErrorMessage("동일한 아이디가 있습니다");
             }
 
 			Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text = "";
@@ -80,14 +85,14 @@ public class UI_LoginScene : UI_Scene
 		string account = Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text;
 		if (regexId.IsMatch(account) == false)
 		{
-			Debug.Log("잘못된 아이디 형식입니당 숫자,영어를 포함한 5~15사이의문자열로 적으세용");
+			ErrorUI.SetErrorMessage("숫자,영어를 포함한 5~15사이의 문자열로 아이디를 적어주세요.");
 			return;
 		}
 
 		string password = Get<GameObject>((int)GameObjects.Password).GetComponent<InputField>().text;
 		if (regexPassword.IsMatch(password) == false)
 		{
-			Debug.Log("잘못된 비밀번호 형식입니당 영대,소, 숫자, 특수문자 1개이상을 포함한 비밀번호 8~20자");
+			ErrorUI.SetErrorMessage("영대,소, 숫자, 특수문자 1개이상을 포함한 비밀번호 8~20자를 입력해주세요.");
 			return;
 		}
 
@@ -101,7 +106,6 @@ public class UI_LoginScene : UI_Scene
 
 		Managers.Web.SendPostRequest<LoginAccountPacketRes>("account/login", packet, (res) =>
 		{
-			Debug.Log(res.LoginOk);
 			Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text = "";
 			Get<GameObject>((int)GameObjects.Password).GetComponent<InputField>().text = "";
 
@@ -112,6 +116,10 @@ public class UI_LoginScene : UI_Scene
 				Managers.Network.UniqueId = encryptionPassword;
 				UI_SelectServerPopup popup = Managers.UI.ShowPopupUI<UI_SelectServerPopup>();
 				popup.SetServers(res.ServerList);
+			}
+            else
+            {
+				ErrorUI.SetErrorMessage("잘못된 아이디나 비밀번호를 입력하셨습니다");
 			}
 		});
 	}
