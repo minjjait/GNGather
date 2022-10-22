@@ -31,7 +31,7 @@ public class UI_FestivalInfo : UI_Popup
         Bind<Text>(typeof(Texts));
 
         GetButton((int)Buttons.CancelButton).gameObject.BindEvent(
-            (PointerEventData evt) => { ClosePopupUI(); Managers.UI.OpenPopup = false; });
+            (PointerEventData evt) => { Managers.Sound.Play("ClickSound"); ClosePopupUI(); Managers.UI.OpenPopup = false; });
     }
     
     public void SetInfo()
@@ -41,6 +41,8 @@ public class UI_FestivalInfo : UI_Popup
         GetText((int)Texts.RelatedAddressText).text = RelatedAddress;
 
         GetButton((int)Buttons.RelatedAddressButton).gameObject.BindEvent(
-            (PointerEventData evt) => Application.OpenURL(RelatedAddress));
+            (PointerEventData evt) => {
+                Application.OpenURL(RelatedAddress); Managers.Sound.Play("ClickSound");
+            });
     }
 }

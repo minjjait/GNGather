@@ -44,16 +44,19 @@ public class UI_LoginScene : UI_Scene
 
 	public void OnClickCreateButton(PointerEventData evt)
 	{
+		Managers.Sound.Play("ClickSound");
 		string account = Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text;
         if (regexId.IsMatch(account) == false)
-        {
+		{
+			Managers.Sound.Play("ErrorSound");
 			ErrorUI.SetErrorMessage("숫자,영어를 포함한 5~15사이의 문자열로 아이디를 적어주세요.");
 			return;
         }
 		
 		string password = Get<GameObject>((int)GameObjects.Password).GetComponent<InputField>().text;
         if (regexPassword.IsMatch(password) == false)
-        {
+		{
+			Managers.Sound.Play("ErrorSound");
 			ErrorUI.SetErrorMessage("영대,소, 숫자, 특수문자 1개이상을 포함한 비밀번호 8~20자를 입력해주세요.");
 			return;
         }
@@ -70,6 +73,7 @@ public class UI_LoginScene : UI_Scene
 		{
 			if(res.CreateOk == false)
 			{
+				Managers.Sound.Play("ErrorSound");
 				ErrorUI.SetErrorMessage("동일한 아이디가 있습니다");
             }
 
@@ -80,11 +84,12 @@ public class UI_LoginScene : UI_Scene
 
 	public void OnClickLoginButton(PointerEventData evt)
 	{
-		Debug.Log("OnClickLoginButton");
+		Managers.Sound.Play("ClickSound");
 
 		string account = Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text;
 		if (regexId.IsMatch(account) == false)
 		{
+			Managers.Sound.Play("ErrorSound");
 			ErrorUI.SetErrorMessage("숫자,영어를 포함한 5~15사이의 문자열로 아이디를 적어주세요.");
 			return;
 		}
@@ -92,6 +97,7 @@ public class UI_LoginScene : UI_Scene
 		string password = Get<GameObject>((int)GameObjects.Password).GetComponent<InputField>().text;
 		if (regexPassword.IsMatch(password) == false)
 		{
+			Managers.Sound.Play("ErrorSound");
 			ErrorUI.SetErrorMessage("영대,소, 숫자, 특수문자 1개이상을 포함한 비밀번호 8~20자를 입력해주세요.");
 			return;
 		}
@@ -118,7 +124,8 @@ public class UI_LoginScene : UI_Scene
 				popup.SetServers(res.ServerList);
 			}
             else
-            {
+			{
+				Managers.Sound.Play("ErrorSound");
 				ErrorUI.SetErrorMessage("잘못된 아이디나 비밀번호를 입력하셨습니다");
 			}
 		});

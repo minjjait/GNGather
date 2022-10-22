@@ -7,9 +7,8 @@ public class SoundManager
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
-    // MP3 Player   -> AudioSource
-    // MP3 음원     -> AudioClip
-    // 관객(귀)     -> AudioListener
+    public float BGMVolume { get { return _audioSources[(int)Define.Sound.Bgm].volume; } set { _audioSources[(int)Define.Sound.Bgm].volume = value; } }
+    public float EffectVolume { get { return _audioSources[(int)Define.Sound.Effect].volume; } set { _audioSources[(int)Define.Sound.Effect].volume = value; } }
 
     public void Init()
     {
@@ -39,6 +38,12 @@ public class SoundManager
             audioSource.Stop();
         }
         _audioClips.Clear();
+    }
+
+    public void ChangeVolume(float bgm, float effect)
+    {
+        _audioSources[(int)Define.Sound.Bgm].volume = bgm;
+        _audioSources[(int)Define.Sound.Effect].volume = effect;
     }
 
     public void Play(string path, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)

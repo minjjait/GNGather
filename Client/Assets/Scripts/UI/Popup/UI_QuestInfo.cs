@@ -48,7 +48,7 @@ public class UI_QuestInfo : UI_Popup
     void SetButtons()
     {
         GetButton((int)Buttons.CancelButton).gameObject.BindEvent(
-            (PointerEventData evt) => { ClosePopupUI(); Managers.UI.OpenPopup = false; });
+            (PointerEventData evt) => { Managers.Sound.Play("ClickSound"); ClosePopupUI(); Managers.UI.OpenPopup = false; });
 
         Data.QuestData quest = null;
         Managers.Player.Quests.TryGetValue(_id, out quest);
@@ -59,10 +59,10 @@ public class UI_QuestInfo : UI_Popup
             GetButton((int)Buttons.ClearButton).gameObject.SetActive(false);
 
             GetButton((int)Buttons.YesButton).gameObject.BindEvent(
-                (PointerEventData evt) => { AcceptQuest(); });
+                (PointerEventData evt) => { Managers.Sound.Play("ClickSound"); AcceptQuest(); });
 
             GetButton((int)Buttons.NoButton).gameObject.BindEvent(
-                (PointerEventData evt) => { ClosePopupUI(); Managers.UI.OpenPopup = false; });
+                (PointerEventData evt) => { Managers.Sound.Play("ClickSound"); ClosePopupUI(); Managers.UI.OpenPopup = false; });
         }
         else
         {
@@ -84,7 +84,7 @@ public class UI_QuestInfo : UI_Popup
                 {
                     GetText((int)Texts.ClearText).text = "Quest Clear!";
                     GetButton((int)Buttons.ClearButton).gameObject.BindEvent(
-                        (PointerEventData evt) => { QuestClear(); });
+                        (PointerEventData evt) => { Managers.Sound.Play("ClickSound"); QuestClear(); });
                 }
                 else//퀘스트 조건 불충족 시
                 {
