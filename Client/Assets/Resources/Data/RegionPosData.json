@@ -3,110 +3,110 @@
     {
       "id": "1",
       "regionName": "진주",
-      "posX": "-10",
-      "posY": "-82"
+      "posX": "-3",
+      "posY": "-57"
     },
     {
       "id": "2",
       "regionName": "거창",
-      "posX": "-36",
-      "posY": "55"
+      "posX": "-78",
+      "posY": "61"
     },
     {
       "id": "3",
       "regionName": "함양",
-      "posX": "-77",
-      "posY": "23"
+      "posX": "-76",
+      "posY": "25"
     },
     {
       "id": "4",
       "regionName": "합천",
-      "posX": "-2",
-      "posY": "10"
+      "posX": "-31",
+      "posY": "2"
     },
     {
       "id": "5",
       "regionName": "산청",
-      "posX": "-43",
-      "posY": "-25"
+      "posX": "-68",
+      "posY": "-22"
     },
     {
       "id": "6",
       "regionName": "하동",
-      "posX": "-87",
-      "posY": "-103"
+      "posX": "-111",
+      "posY": "-63"
     },
     {
       "id": "7",
       "regionName": "남해",
-      "posX": "-56",
-      "posY": "-158"
+      "posX": "-52",
+      "posY": "-150"
     },
     {
       "id": "8",
       "regionName": "사천",
-      "posX": "-28",
-      "posY": "-110"
+      "posX": "-19",
+      "posY": "-102"
     },
     {
       "id": "9",
       "regionName": "고성",
-      "posX": "25",
-      "posY": "-131"
+      "posX": "59",
+      "posY": "-130"
     },
     {
       "id": "10",
       "regionName": "의령",
-      "posX": "24",
-      "posY": "-31"
+      "posX": "23",
+      "posY": "-56"
     },
     {
       "id": "11",
       "regionName": "함안",
-      "posX": "53",
-      "posY": "-58"
+      "posX": "77",
+      "posY": "-40"
     },
     {
       "id": "12",
       "regionName": "창녕",
-      "posX": "79",
-      "posY": "-2"
+      "posX": "99",
+      "posY": "-26"
     },
     {
       "id": "13",
       "regionName": "밀양",
-      "posX": "141",
-      "posY": "-16"
+      "posX": "101",
+      "posY": "-8"
     },
     {
       "id": "14",
       "regionName": "창원",
-      "posX": "99",
-      "posY": "-62"
+      "posX": "53",
+      "posY": "-93"
     },
     {
       "id": "15",
       "regionName": "거제",
-      "posX": "97",
-      "posY": "-153"
+      "posX": "83",
+      "posY": "-162"
     },
     {
       "id": "16",
       "regionName": "김해",
-      "posX": "171",
-      "posY": "-50"
+      "posX": "141",
+      "posY": "-80"
     },
     {
       "id": "17",
       "regionName": "양산",
-      "posX": "188",
-      "posY": "-23"
+      "posX": "225",
+      "posY": "-22"
     },
     {
       "id": "18",
       "regionName": "통영",
-      "posX": "66",
-      "posY": "-154"
+      "posX": "55",
+      "posY": "-144"
     }
   ]
 } 
