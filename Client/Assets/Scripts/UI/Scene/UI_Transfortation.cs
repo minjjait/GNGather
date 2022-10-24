@@ -98,7 +98,7 @@ public class UI_Transfortation : UI_Base
     void OnClickExitButton(PointerEventData evt)
     {
         Managers.Sound.Play("ClickSound");
-        //Application.Quit();
+        Application.Quit();
     }
 
     #region Sound
