@@ -89,8 +89,8 @@ namespace Server.Game
 				Vector2Int respawnPos;
 				while (true)
 				{
-					respawnPos.x = _rand.Next(-10,10);
-					respawnPos.y = _rand.Next(-10,10);
+					respawnPos.x = _rand.Next(-20,0);
+					respawnPos.y = _rand.Next(-70,-50);
 					if (Map.CanGo(respawnPos, true))
 					{
 						gameObject.CellPos = respawnPos;

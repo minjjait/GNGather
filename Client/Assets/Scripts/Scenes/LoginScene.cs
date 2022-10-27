@@ -11,12 +11,14 @@ public class LoginScene : BaseScene
         base.Init();
 
         SceneType = Define.Scene.Login;
-               
+
         Managers.Web.BaseUrl = "https://localhost:5001/api";
 
         Screen.SetResolution(1920, 1080, false);
 
         _sceneUI = Managers.UI.ShowSceneUI<UI_LoginScene>();
+
+        Managers.Sound.Play("Login", Define.Sound.Bgm);
     }
 
     public override void Clear()
