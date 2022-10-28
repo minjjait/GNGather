@@ -77,6 +77,7 @@ public class UI_LoginScene : UI_Scene
 				ErrorUI.SetErrorMessage("동일한 아이디가 있습니다");
             }
 
+			ErrorUI.SetErrorMessage("계정이 생성되었습니다");
 			Get<GameObject>((int)GameObjects.AccountName).GetComponent<InputField>().text = "";
 			Get<GameObject>((int)GameObjects.Password).GetComponent<InputField>().text = "";
 		});

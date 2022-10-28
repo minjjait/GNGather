@@ -8,6 +8,7 @@ TagManager:
   - MyPlayer
   - FestivalNPC
   - QuestNPC
+  - TransfortationNPC
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BUS
+    uniqueID: 3221634863
     locked: 0
