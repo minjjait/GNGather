@@ -22,7 +22,7 @@ class PacketManager
 	public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
 
 	public void Register()
-	{		
+	{
 		_onRecv.Add((ushort)MsgId.SEnterGame, MakePacket<S_EnterGame>);
 		_handler.Add((ushort)MsgId.SEnterGame, PacketHandler.S_EnterGameHandler);		
 		_onRecv.Add((ushort)MsgId.SLeaveGame, MakePacket<S_LeaveGame>);
@@ -49,6 +49,8 @@ class PacketManager
 		_handler.Add((ushort)MsgId.SItemList, PacketHandler.S_ItemListHandler);		
 		_onRecv.Add((ushort)MsgId.SQuestList, MakePacket<S_QuestList>);
 		_handler.Add((ushort)MsgId.SQuestList, PacketHandler.S_QuestListHandler);		
+		_onRecv.Add((ushort)MsgId.SAddQuest, MakePacket<S_AddQuest>);
+		_handler.Add((ushort)MsgId.SAddQuest, PacketHandler.S_AddQuestHandler);		
 		_onRecv.Add((ushort)MsgId.SQuestClear, MakePacket<S_QuestClear>);
 		_handler.Add((ushort)MsgId.SQuestClear, PacketHandler.S_QuestClearHandler);		
 		_onRecv.Add((ushort)MsgId.SQuestSatisfied, MakePacket<S_QuestSatisfied>);

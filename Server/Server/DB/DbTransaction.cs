@@ -63,25 +63,22 @@ namespace Server.DB
 					bool success = db.SaveChangesEx();
 					if (success)
 					{
-						/*
-						 Me
 						room.Push(() =>
 						{
-							//Item newItem = Item.MakeItem(itemDb);
-							//player.Inven.Add(newItem);
+							Quest newQuest = Quest.MakeQuest(questDb);
+							player.Quests.Add(newQuest.TemplateId, newQuest);
 
 							// Client Noti
 							{
-								S_AddItem itemPacket = new S_AddItem();
-								ItemInfo itemInfo = new ItemInfo();
-								itemInfo.MergeFrom(newItem.Info);
-								itemPacket.Items.Add(itemInfo);
+								S_AddQuest addQuestPacket = new S_AddQuest();
+								QuestInfo questInfo = new QuestInfo();
+								questInfo.MergeFrom(newQuest.Info);
+								addQuestPacket.Quest = questInfo;
 
-								player.Session.Send(itemPacket);
+								player.Session.Send(addQuestPacket);
 							 
 							}
 						});
-						*/
 					}
 				}
 			});
@@ -128,13 +125,12 @@ namespace Server.DB
 				}
 			});
 		}
-		public static void QuestSatisfied(Player player, C_Move movePacket)
+		public static void QuestSatisfied(Player player, C_InteractionFestival fesPacket)
 		{
 			if (player == null)
 				return;
 
-
-			int questRegion = movePacket.RegionId / 10;
+			int questRegion = fesPacket.ObjectId / 10;
 			if (questRegion == 0)
 				questRegion = 18;
 			
@@ -153,14 +149,15 @@ namespace Server.DB
 						.Where(q => q.OwnerDbId == player.PlayerDbId && q.TemplateId == questRegion)
 						.FirstOrDefault();
 
-					quest.IsCleared = true;
-
 					db.Entry(quest).Property(nameof(QuestDb.IsCleared)).IsModified = true;
 
 					bool success = db.SaveChangesEx();
 
+					
 					if (success)
 					{
+						player.Quests[questRegion].IsCleared = true;
+
 						player.Room.Push(() =>
 						{
 							// Client Noti

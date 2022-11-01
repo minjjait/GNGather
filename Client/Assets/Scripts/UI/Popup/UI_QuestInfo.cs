@@ -50,7 +50,7 @@ public class UI_QuestInfo : UI_Popup
         GetButton((int)Buttons.CancelButton).gameObject.BindEvent(
             (PointerEventData evt) => { Managers.Sound.Play("ClickSound"); ClosePopupUI(); Managers.UI.OpenPopup = false; });
 
-        Data.QuestData quest = null;
+        Quest quest = null;
         Managers.Player.Quests.TryGetValue(_id, out quest);
 
         //퀘스트 없을 시
@@ -80,7 +80,7 @@ public class UI_QuestInfo : UI_Popup
             }
             else
             {
-                if(Managers.Player.QuestCleared[_id] == true)//퀘스트 조건 충족시
+                if(Managers.Player.Quests[_id].IsCleared == true)//퀘스트 조건 충족시
                 {
                     GetText((int)Texts.ClearText).text = "Quest Clear!";
                     GetButton((int)Buttons.ClearButton).gameObject.BindEvent(
@@ -97,12 +97,13 @@ public class UI_QuestInfo : UI_Popup
 
     void AcceptQuest()
     {
-        bool success = Managers.Player.HaveUniqueQuest(_id, _quest);
+        bool success = Managers.Player.HaveUniqueQuest(_id);
 
         //퀘스트 패킷 보내기(C_ADD_QUEST)
         //DB에 퀘스트 추가
         if (success)
         {
+            //Managers.Player.Quests.Add(id, quest);
             C_AddQuest questPacket = new C_AddQuest();
             questPacket.QuestId = _id;
             Managers.Network.Send(questPacket);

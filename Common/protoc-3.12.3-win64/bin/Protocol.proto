@@ -25,9 +25,10 @@ enum MsgId {
   S_ITEM_LIST = 18;
   S_QUEST_LIST = 19;
   C_ADD_QUEST = 20;
-  C_QUEST_CLEAR = 21;
-  S_QUEST_CLEAR = 22;
-  S_QUEST_SATISFIED = 23;
+  S_ADD_QUEST = 21;
+  C_QUEST_CLEAR = 22;
+  S_QUEST_CLEAR = 23;
+  S_QUEST_SATISFIED = 24;
 }
 
 enum CreatureState {
@@ -138,6 +139,10 @@ message S_QuestList{
 
 message C_AddQuest{
   int32 questId = 1;
+}
+
+message S_AddQuest{
+ QuestInfo quest = 1;
 }
 
 message C_QuestClear{

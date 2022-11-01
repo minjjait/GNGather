@@ -165,11 +165,27 @@ class PacketHandler
 
 		Managers.Player.Quests.Clear();
 
-		foreach (QuestInfo quest in questListPacket.Quests)
+		foreach (QuestInfo questInfo in questListPacket.Quests)
 		{
-			bool success = Managers.Player.HaveUniqueQuest(quest.TemplateId, Managers.Data.QuestDict[quest.TemplateId]);
-			if(success)
-				Managers.Player.QuestCleared[quest.TemplateId] = quest.IsCleared;
+			bool success = Managers.Player.HaveUniqueQuest(questInfo.TemplateId);
+            if (success)
+			{
+				Quest quest= Managers.Player.MakeQuest(questInfo);
+				Managers.Player.Quests.Add(quest.TemplateId, quest);
+            }
+		}
+	}
+	public static void S_AddQuestHandler(PacketSession session, IMessage packet)
+	{
+		S_AddQuest addQuestPacket = packet as S_AddQuest;
+
+		Managers.Player.Quests.Clear();
+
+		bool success = Managers.Player.HaveUniqueQuest(addQuestPacket.Quest.TemplateId);
+		if (success)
+		{
+			Quest quest = Managers.Player.MakeQuest(addQuestPacket.Quest);
+			Managers.Player.Quests.Add(quest.TemplateId, quest);
 		}
 	}
 
@@ -183,13 +199,13 @@ class PacketHandler
 
 		if (Managers.Player.Quests.ContainsKey(questSatisfiedPacket.Quest.TemplateId))
         {
-			Managers.Player.QuestCleared[questSatisfiedPacket.Quest.TemplateId] = true;
+			Managers.Player.Quests[questSatisfiedPacket.Quest.TemplateId].IsCleared = true;
         }
 	}
+
 	public static void S_QuestClearHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestClear questClearPacket = packet as S_QuestClear;
-
 
 		Managers.Player.Items.Add(questClearPacket.ItemId, Managers.Data.ItemDict[questClearPacket.ItemId]);
 	}

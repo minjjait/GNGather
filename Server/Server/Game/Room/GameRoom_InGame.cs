@@ -37,8 +37,6 @@ namespace Server.Game
 			resMovePacket.PosInfo = movePacket.PosInfo;
 
 			Broadcast(player.CellPos, resMovePacket);
-
-			DbTransaction.QuestSatisfied(player, movePacket);
 		}
 
 		public void HandleSpeechBubble(Player player, C_SpeechBubble speechPacket)
@@ -85,6 +83,8 @@ namespace Server.Game
 
 				player.Session.Send(resFesPacket);
             }
+
+			DbTransaction.QuestSatisfied(player, fesPacket);
 		}
 
 		public void HandleAddQuest(Player player, GameRoom room, C_AddQuest questPacket)
