@@ -68,6 +68,8 @@ namespace Server.Game
 				FestivalDb fesInfo = db.Festivals
 					.Where(f => f.FestivalDbId == fesPacket.ObjectId).FirstOrDefault();
 
+
+                Console.WriteLine(fesPacket.ObjectId);
 				if(fesInfo == null)
                 {
                     Console.WriteLine("정보가 없습니다");

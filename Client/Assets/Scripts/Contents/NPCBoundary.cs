@@ -23,12 +23,13 @@ public class NPCBoundary : MonoBehaviour
 
             if(gameObject.tag == "FestivalNPC")
             {
-                Id = Id / 10 + 1;
                 _bc.Chat = $"{Managers.Data.RegionPosDict[Id].regionName} NPC입니다~~";
             }
             else if (gameObject.tag == "QuestNPC")
             {
                 _bc.Chat = $"{Managers.Data.RegionPosDict[Id].regionName} 퀘스트 NPC입니다~~";
+
+                Id = Id / 10 + 1;
             }
             else if (gameObject.tag == "TransfortationNPC")
             {
