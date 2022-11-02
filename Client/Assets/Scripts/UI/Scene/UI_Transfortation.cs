@@ -58,9 +58,7 @@ public class UI_Transfortation : UI_Base
     }
 
     private void RideKickboard()
-    {
-        Debug.Log(_regionId);
-                
+    {                
         //√ ±‚»≠
         Managers.Player.UsingTransfortation = true;
         Managers.UI.CloseAllPopupUI();

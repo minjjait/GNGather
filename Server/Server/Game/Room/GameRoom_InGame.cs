@@ -64,7 +64,7 @@ namespace Server.Game
 			using(AppDbContext db = new AppDbContext())
             {
 				FestivalDb fesInfo = db.Festivals
-					.Where(f => f.FestivalDbId == fesPacket.ObjectId).FirstOrDefault();
+					.Where(f => f.TemplateId == fesPacket.ObjectId).FirstOrDefault();
 
 
                 Console.WriteLine(fesPacket.ObjectId);

@@ -149,6 +149,8 @@ namespace Server.DB
 						.Where(q => q.OwnerDbId == player.PlayerDbId && q.TemplateId == questRegion)
 						.FirstOrDefault();
 
+					quest.IsCleared = true;
+
 					db.Entry(quest).Property(nameof(QuestDb.IsCleared)).IsModified = true;
 
 					bool success = db.SaveChangesEx();

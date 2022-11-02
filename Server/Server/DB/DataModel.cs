@@ -62,6 +62,7 @@ namespace Server.DB
 	public class FestivalDb
     {
 		public int FestivalDbId { get; set; }
+		public int TemplateId { get; set; }
 		public string FestivalName { get; set; }
 		public string FestivalExplain { get; set; }
 		public string RelatedAddress { get; set; }

@@ -179,9 +179,8 @@ class PacketHandler
 	{
 		S_AddQuest addQuestPacket = packet as S_AddQuest;
 
-		Managers.Player.Quests.Clear();
-
 		bool success = Managers.Player.HaveUniqueQuest(addQuestPacket.Quest.TemplateId);
+
 		if (success)
 		{
 			Quest quest = Managers.Player.MakeQuest(addQuestPacket.Quest);

@@ -28,7 +28,7 @@ public class PlayerManager
 
     public Quest MakeQuest(QuestInfo questInfo)
 	{
-		Quest quest = null;
+		Quest quest = new Quest();
 
 		QuestData questData = null;
 

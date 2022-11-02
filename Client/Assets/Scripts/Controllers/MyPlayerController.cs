@@ -131,6 +131,7 @@ public class MyPlayerController : PlayerController
 		{
 			if (_festivalNPC != null)
             {
+				Debug.Log(_festivalNPC.Id);
 				C_InteractionFestival fesPacket = new C_InteractionFestival();
 				fesPacket.ObjectId = _festivalNPC.Id;
 				Managers.Network.Send(fesPacket);
@@ -138,6 +139,7 @@ public class MyPlayerController : PlayerController
 
 			if (_questNPC != null)
 			{
+				Debug.Log(_questNPC.Id);
 				Managers.UI.OpenPopup = true;
 				Managers.Player.QuestNPCId = _questNPC.Id;
 				UI_QuestInfo quest = Managers.UI.ShowPopupUI<UI_QuestInfo>();
