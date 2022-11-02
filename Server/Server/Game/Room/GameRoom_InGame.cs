@@ -106,5 +106,48 @@ namespace Server.Game
 
 			DbTransaction.QuestClear(player, room, questClearPacket);
 		}
+
+		public void HandleTransfortation(Player player, C_UseTransfortation transfortationPacket)
+		{
+			if (player == null)
+				return;
+
+			// TODO : 검증
+			PositionInfo movePosInfo = transfortationPacket.PosInfo;
+			ObjectInfo info = player.Info;
+
+			info.PosInfo.State = movePosInfo.State;
+			info.PosInfo.MoveDir = movePosInfo.MoveDir;
+			Map.ApplyMove(player, new Vector2Int(movePosInfo.PosX, movePosInfo.PosY));
+
+			// 다른 플레이어한테도 알려준다
+			S_UseTransfortation resTransfortationPacket = new S_UseTransfortation();
+			resTransfortationPacket.ObjectId = player.Info.ObjectId;
+			resTransfortationPacket.PosInfo = transfortationPacket.PosInfo;
+
+			Broadcast(player.CellPos, resTransfortationPacket);
+		}
+
+		public void HandleArrived(Player player, C_TransfortationArrived transfortationPacket)
+		{
+			if (player == null)
+				return;
+
+			// TODO : 검증
+			PositionInfo movePosInfo = transfortationPacket.PosInfo;
+			ObjectInfo info = player.Info;
+
+			info.PosInfo.State = movePosInfo.State;
+			info.PosInfo.MoveDir = movePosInfo.MoveDir;
+			Map.ApplyMove(player, new Vector2Int(movePosInfo.PosX, movePosInfo.PosY));
+
+			// 다른 플레이어한테도 알려준다
+			S_TransfortationArrived resTransfortationPacket = new S_TransfortationArrived();
+			resTransfortationPacket.ObjectId = player.Info.ObjectId;
+			resTransfortationPacket.PosInfo = transfortationPacket.PosInfo;
+
+			Broadcast(player.CellPos, resTransfortationPacket);
+		}
+
 	}
 }

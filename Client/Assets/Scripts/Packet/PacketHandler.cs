@@ -211,4 +211,62 @@ class PacketHandler
 
 
 	#endregion
+
+
+	public static void S_UseTransfortationHandler(PacketSession session, IMessage packet)
+	{
+		S_UseTransfortation transfortationPacket = packet as S_UseTransfortation;
+
+		GameObject go = Managers.Object.FindById(transfortationPacket.ObjectId);
+
+		if (go == null)
+			return;
+
+		if (Managers.Object.MyPlayer.Id == transfortationPacket.ObjectId)
+        {
+			UI_GameScene gameSceneUI = Managers.UI.SceneUI as UI_GameScene;
+			UI_Error errorUI = gameSceneUI.ErrorUI;
+			errorUI.SetErrorMessage("이동 중입니다~");
+
+			UI_Transfortation transfortation = gameSceneUI.TransfortationUI;
+			transfortation.gameObject.SetActive(true);
+			transfortation.Arrived();
+			
+			Managers.Object.MyPlayer.PosInfo = transfortationPacket.PosInfo;
+			Debug.Log("ok 가즈아~");
+			return;
+        }
+
+		CreatureController cc = go.GetComponent<CreatureController>();
+		if (cc == null)
+			return;
+
+		cc.PosInfo = transfortationPacket.PosInfo;
+	}
+
+	public static void S_TransfortationArrivedHandler(PacketSession session, IMessage packet)
+	{
+		S_TransfortationArrived arrivedPacket = packet as S_TransfortationArrived;
+
+		GameObject go = Managers.Object.FindById(arrivedPacket.ObjectId);
+
+		if (go == null)
+			return;
+
+		if (Managers.Object.MyPlayer.Id == arrivedPacket.ObjectId)
+		{
+			UI_GameScene gameSceneUI = Managers.UI.SceneUI as UI_GameScene;
+			UI_Error errorUI = gameSceneUI.ErrorUI;
+			errorUI.SetErrorMessage("도착~!");
+			Debug.Log("도착~");
+			Managers.Object.MyPlayer.PosInfo = arrivedPacket.PosInfo;
+			return;
+		}
+
+		CreatureController cc = go.GetComponent<CreatureController>();
+		if (cc == null)
+			return;
+
+		cc.PosInfo = arrivedPacket.PosInfo;
+	}
 }

@@ -222,7 +222,6 @@ public class MyPlayerController : PlayerController
 		{
 			C_Move movePacket = new C_Move();
 			movePacket.PosInfo = PosInfo;
-			movePacket.RegionId = Managers.Player.RegionId;
 			Managers.Network.Send(movePacket);
 			_updated = false;
 		}

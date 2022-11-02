@@ -119,4 +119,36 @@ class PacketHandler
 
 		room.Push(room.HandleQuestClear, player, room, questClear);
 	}
+
+	public static void C_UseTransfortationHandler(PacketSession session, IMessage packet)
+	{
+		C_UseTransfortation transfortationPacket = packet as C_UseTransfortation;
+		ClientSession clientSession = session as ClientSession;
+
+		Player player = clientSession.MyPlayer;
+		if (player == null)
+			return;
+
+		GameRoom room = player.Room;
+		if (room == null)
+			return;
+
+		room.Push(room.HandleTransfortation, player, transfortationPacket);
+	}
+
+	public static void C_TransfortationArrivedHandler(PacketSession session, IMessage packet)
+	{
+		C_TransfortationArrived transfortationPacket = packet as C_TransfortationArrived;
+		ClientSession clientSession = session as ClientSession;
+
+		Player player = clientSession.MyPlayer;
+		if (player == null)
+			return;
+
+		GameRoom room = player.Room;
+		if (room == null)
+			return;
+
+		room.Push(room.HandleArrived, player, transfortationPacket);
+	}
 }

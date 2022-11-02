@@ -152,7 +152,7 @@ namespace Server.DB
 					quest.IsCleared = true;
 
 					db.Entry(quest).Property(nameof(QuestDb.IsCleared)).IsModified = true;
-
+					
 					bool success = db.SaveChangesEx();
 
 					

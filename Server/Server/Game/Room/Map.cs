@@ -158,7 +158,7 @@ namespace Server.Game
 			return true;
 		}
 
-		public bool ApplyMove(GameObject gameObject, Vector2Int dest, bool checkObjects = true, bool collision = true)
+		public bool ApplyMove(GameObject gameObject, Vector2Int dest, bool checkObjects = true, bool collision = true, bool useTransfortation = false)
 		{
 			if (gameObject.Room == null)
 				return false;
@@ -166,8 +166,12 @@ namespace Server.Game
 				return false;
 
 			PositionInfo posInfo = gameObject.PosInfo;
-			if (CanGo(dest, checkObjects) == false)
-				return false;
+
+            if (!useTransfortation)
+			{
+				if (CanGo(dest, checkObjects) == false)
+					return false;
+			}
 
 			if (collision)
 			{

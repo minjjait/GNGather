@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class UI_Transfortation : UI_Base
 {
+    Coroutine _coArrived;
     int _regionId;
 
     float tempBGM;
@@ -65,32 +66,53 @@ public class UI_Transfortation : UI_Base
         UI_GameScene gameScene = Managers.UI.SceneUI as UI_GameScene;
         gameScene.CloseAll();
         Managers.Player.RegionId = 0;
-        
+
         GameObject go = GameObject.FindGameObjectWithTag("MyPlayer");
         MyPlayerController mpc = go.transform.GetComponent<MyPlayerController>();
 
-        mpc.CellPos = new Vector3Int(250, 0, 0);
-        mpc.State = CreatureState.Idle;
-        mpc.Dir = MoveDir.Down;
-        mpc.transform.position = new Vector3(250, 0, 0);
-        mpc.CheckUpdatedFlag();
-        Invoke("UseTransfortation", 5.0f);
+        if (mpc == null)
+            return;
+
+        C_UseTransfortation transfortationPacket = new C_UseTransfortation();
+        PositionInfo posInfo = new PositionInfo();
+        posInfo.State = CreatureState.Idle;
+        posInfo.MoveDir = MoveDir.Down;
+        posInfo.PosX = 250;
+        posInfo.PosY = 0;
+        transfortationPacket.PosInfo = posInfo;
+
+        Managers.Network.Send(transfortationPacket);
     }
 
-    void UseTransfortation()
-    {//µµÂø ÀÌÈÄ
+    public void Arrived()
+    {
+        _coArrived = StartCoroutine("CoArrived");
+        gameObject.SetActive(false);
+    }
+
+    IEnumerator CoArrived()
+    {
+        Debug.Log("1");
+        yield return new WaitForSeconds(5.0f);
+
+        Debug.Log("2");
+        //µµÂø ÀÌÈÄ
         Managers.Player.UsingTransfortation = false;
-        
+
+        RegionPos regionPos = Managers.Data.RegionPosDict[_regionId];
+
         GameObject go = GameObject.FindGameObjectWithTag("MyPlayer");
         MyPlayerController mpc = go.transform.GetComponent<MyPlayerController>();
 
-        RegionPos regionPos = Managers.Data.RegionPosDict[_regionId];
-        mpc.CellPos = new Vector3Int(regionPos.posX, regionPos.posY, 0);
-        mpc.State = CreatureState.Idle;
-        mpc.Dir = MoveDir.Down;
-        mpc.transform.position = new Vector3(regionPos.posX, regionPos.posY, 0);
+        C_TransfortationArrived transfortationPacket = new C_TransfortationArrived();
+        PositionInfo posInfo = new PositionInfo();
+        posInfo.State = CreatureState.Idle;
+        posInfo.MoveDir = MoveDir.Down;
+        posInfo.PosX = regionPos.posX;
+        posInfo.PosY = regionPos.posY;
+        transfortationPacket.PosInfo = posInfo;
 
-        mpc.CheckUpdatedFlag();
+        Managers.Network.Send(transfortationPacket);
     }
 
     void OnClickExitButton(PointerEventData evt)

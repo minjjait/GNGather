@@ -22,7 +22,7 @@ class PacketManager
 	public Action<PacketSession, IMessage, ushort> CustomHandler { get; set; }
 
 	public void Register()
-	{
+	{		
 		_onRecv.Add((ushort)MsgId.SEnterGame, MakePacket<S_EnterGame>);
 		_handler.Add((ushort)MsgId.SEnterGame, PacketHandler.S_EnterGameHandler);		
 		_onRecv.Add((ushort)MsgId.SLeaveGame, MakePacket<S_LeaveGame>);
@@ -54,7 +54,11 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SQuestClear, MakePacket<S_QuestClear>);
 		_handler.Add((ushort)MsgId.SQuestClear, PacketHandler.S_QuestClearHandler);		
 		_onRecv.Add((ushort)MsgId.SQuestSatisfied, MakePacket<S_QuestSatisfied>);
-		_handler.Add((ushort)MsgId.SQuestSatisfied, PacketHandler.S_QuestSatisfiedHandler);
+		_handler.Add((ushort)MsgId.SQuestSatisfied, PacketHandler.S_QuestSatisfiedHandler);		
+		_onRecv.Add((ushort)MsgId.SUseTransfortation, MakePacket<S_UseTransfortation>);
+		_handler.Add((ushort)MsgId.SUseTransfortation, PacketHandler.S_UseTransfortationHandler);		
+		_onRecv.Add((ushort)MsgId.STransfortationArrived, MakePacket<S_TransfortationArrived>);
+		_handler.Add((ushort)MsgId.STransfortationArrived, PacketHandler.S_TransfortationArrivedHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)
