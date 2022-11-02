@@ -223,7 +223,9 @@ class PacketHandler
 			return;
 
 		if (Managers.Object.MyPlayer.Id == transfortationPacket.ObjectId)
-        {
+		{
+			Managers.Object.MyPlayer.transform.position = new Vector3(250, 0, 0);
+
 			UI_GameScene gameSceneUI = Managers.UI.SceneUI as UI_GameScene;
 			UI_Error errorUI = gameSceneUI.ErrorUI;
 			errorUI.SetErrorMessage("이동 중입니다~");
@@ -233,7 +235,6 @@ class PacketHandler
 			transfortation.Arrived();
 			
 			Managers.Object.MyPlayer.PosInfo = transfortationPacket.PosInfo;
-			Debug.Log("ok 가즈아~");
 			return;
         }
 
@@ -255,6 +256,7 @@ class PacketHandler
 
 		if (Managers.Object.MyPlayer.Id == arrivedPacket.ObjectId)
 		{
+			Managers.Player.UsingTransfortation = false;
 			UI_GameScene gameSceneUI = Managers.UI.SceneUI as UI_GameScene;
 			UI_Error errorUI = gameSceneUI.ErrorUI;
 			errorUI.SetErrorMessage("도착~!");
