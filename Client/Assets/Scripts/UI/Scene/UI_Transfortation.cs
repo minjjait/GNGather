@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class UI_Transfortation : UI_Base
 {
-    Coroutine _coArrived;
+   // Coroutine _coArrived;
     int _regionId;
 
     float tempBGM;
@@ -81,24 +81,22 @@ public class UI_Transfortation : UI_Base
         posInfo.PosY = 0;
         transfortationPacket.PosInfo = posInfo;
 
+        Managers.Object.MyPlayer.transform.position = new Vector3(250, 0, 0);
+
         Managers.Network.Send(transfortationPacket);
     }
 
     public void Arrived()
     {
-        _coArrived = StartCoroutine("CoArrived");
+        Invoke("DoArrived", 5.0f);
+        //_coArrived = StartCoroutine("CoArrived");
         gameObject.SetActive(false);
     }
 
-    IEnumerator CoArrived()
+    void DoArrived()
     {
-        Debug.Log("1");
-        yield return new WaitForSeconds(5.0f);
 
-        Debug.Log("2");
         //µµÂø ÀÌÈÄ
-        Managers.Player.UsingTransfortation = false;
-
         RegionPos regionPos = Managers.Data.RegionPosDict[_regionId];
 
         GameObject go = GameObject.FindGameObjectWithTag("MyPlayer");
@@ -111,6 +109,8 @@ public class UI_Transfortation : UI_Base
         posInfo.PosX = regionPos.posX;
         posInfo.PosY = regionPos.posY;
         transfortationPacket.PosInfo = posInfo;
+
+        Managers.Object.MyPlayer.transform.position = new Vector3(regionPos.posX+0.5f, regionPos.posY+0.5f, 0);
 
         Managers.Network.Send(transfortationPacket);
     }
