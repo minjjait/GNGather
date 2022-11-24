@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public class WebManager
 {
-    public string BaseUrl { get; set; } = "https://localhost:5001/api";
+    public string BaseUrl { get; set; } = "http://203.255.3.97:5001/api";
 
 	public void SendPostRequest<T>(string url, object obj, Action<T> res)
 	{
@@ -36,6 +36,7 @@ public class WebManager
 			{
 				UI_LoginScene loginSceneUI = Managers.UI.SceneUI as UI_LoginScene;
 				UI_Error errorUI = loginSceneUI.ErrorUI;
+				Debug.Log(uwr.error);
 				errorUI.SetErrorMessage(uwr.error);
 			}
 			else

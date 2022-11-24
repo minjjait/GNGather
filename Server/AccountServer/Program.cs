@@ -20,6 +20,7 @@ namespace AccountServer
 			Host.CreateDefaultBuilder(args)
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
+					webBuilder.UseUrls("http://203.255.3.97:5000", "http://203.255.3.97:5001");
 					webBuilder.UseStartup<Startup>();
 				});
 	}
