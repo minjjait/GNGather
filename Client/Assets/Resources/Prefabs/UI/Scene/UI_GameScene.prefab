@@ -1181,6 +1181,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Transfortation
       objectReference: {fileID: 0}
+    - target: {fileID: 9216441769044160596, guid: 814f35231186b064ab83c7fdbffdcd74,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 814f35231186b064ab83c7fdbffdcd74, type: 3}
 --- !u!224 &3860388942914340721 stripped
@@ -1257,7 +1262,7 @@ PrefabInstance:
     - target: {fileID: 287714689261487874, guid: 2283680c435a43946bd78fe113139aaa,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 194.4485
       objectReference: {fileID: 0}
     - target: {fileID: 287714689261487874, guid: 2283680c435a43946bd78fe113139aaa,
         type: 3}
@@ -1302,7 +1307,7 @@ PrefabInstance:
     - target: {fileID: 287714689261487874, guid: 2283680c435a43946bd78fe113139aaa,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 140
+      value: 187.22424
       objectReference: {fileID: 0}
     - target: {fileID: 287714689261487874, guid: 2283680c435a43946bd78fe113139aaa,
         type: 3}
@@ -1358,6 +1363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI_Error
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516166468959746225, guid: 53c856158e618704c875b3822ad27340,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6079667025205410429, guid: 53c856158e618704c875b3822ad27340,
         type: 3}
