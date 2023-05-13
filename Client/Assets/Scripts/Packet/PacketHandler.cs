@@ -71,7 +71,6 @@ class PacketHandler
 		S_Login loginPacket = (S_Login)packet;
 		Debug.Log($"LoginOk({loginPacket.LoginOk})");
 
-		// TODO : 로비 UI에서 캐릭터 보여주고, 선택할 수 있도록
 		if (loginPacket.Players == null || loginPacket.Players.Count == 0)
 		{
 			C_CreatePlayer createPacket = new C_CreatePlayer();
@@ -80,7 +79,7 @@ class PacketHandler
 		}
 		else
 		{
-			// 무조건 첫번째 로그인
+			//첫번째 로그인
 			LobbyPlayerInfo info = loginPacket.Players[0];
 			C_EnterGame enterGamePacket = new C_EnterGame();
 			enterGamePacket.Name = info.Name;
@@ -106,6 +105,7 @@ class PacketHandler
 		}
 	}
 
+	//유저 네트워크 연결 체크
 	public static void S_PingHandler(PacketSession session, IMessage packet)
 	{
 		C_Pong pongPacket = new C_Pong();
@@ -113,6 +113,7 @@ class PacketHandler
 		Managers.Network.Send(pongPacket);
 	}
 
+	//말풍선 변경
 	public static void S_SpeechBubbleHandler(PacketSession session, IMessage packet)
 	{
 		S_SpeechBubble chatPacket = packet as S_SpeechBubble;
@@ -129,6 +130,7 @@ class PacketHandler
 		cc.Chat = chatPacket.Chat;
 	}
 
+	//축제 NPC 정보 
 	public static void S_InteractionFestivalHandler(PacketSession session, IMessage packet)
 	{
 		S_InteractionFestival fesPacket = packet as S_InteractionFestival;
@@ -144,6 +146,7 @@ class PacketHandler
 	}
 
     #region QUEST&ITEM
+	//아이템 리스트
     public static void S_ItemListHandler(PacketSession session, IMessage packet)
 	{
 		S_ItemList itemListPacket = packet as S_ItemList;
@@ -159,6 +162,7 @@ class PacketHandler
         }
 	}
 
+	//퀘스트 리스트
 	public static void S_QuestListHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestList questListPacket = packet as S_QuestList;
@@ -175,6 +179,8 @@ class PacketHandler
             }
 		}
 	}
+
+	//퀘스트 추가
 	public static void S_AddQuestHandler(PacketSession session, IMessage packet)
 	{
 		S_AddQuest addQuestPacket = packet as S_AddQuest;
@@ -188,6 +194,7 @@ class PacketHandler
 		}
 	}
 
+	//퀘스트 조건 충족시
 	public static void S_QuestSatisfiedHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestSatisfied questSatisfiedPacket = packet as S_QuestSatisfied;
@@ -202,6 +209,7 @@ class PacketHandler
         }
 	}
 
+	//퀘스트 클리어 시
 	public static void S_QuestClearHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestClear questClearPacket = packet as S_QuestClear;
@@ -212,7 +220,7 @@ class PacketHandler
 
 	#endregion
 
-
+	//빠른 이동
 	public static void S_UseTransfortationHandler(PacketSession session, IMessage packet)
 	{
 		S_UseTransfortation transfortationPacket = packet as S_UseTransfortation;
@@ -243,6 +251,7 @@ class PacketHandler
 		cc.PosInfo = transfortationPacket.PosInfo;
 	}
 
+	//빠른 이동 도착
 	public static void S_TransfortationArrivedHandler(PacketSession session, IMessage packet)
 	{
 		S_TransfortationArrived arrivedPacket = packet as S_TransfortationArrived;

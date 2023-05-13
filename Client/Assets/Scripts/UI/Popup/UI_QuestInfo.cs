@@ -103,7 +103,6 @@ public class UI_QuestInfo : UI_Popup
         //DB에 퀘스트 추가
         if (success)
         {
-            //Managers.Player.Quests.Add(id, quest);
             C_AddQuest questPacket = new C_AddQuest();
             questPacket.QuestId = _id;
             Managers.Network.Send(questPacket);
@@ -125,7 +124,6 @@ public class UI_QuestInfo : UI_Popup
         questClearPacket.QuestId = _id;
         Managers.Network.Send(questClearPacket);
 
-        //아이템 획득 팝업 띄울 것인가?!
         GetText((int)Texts.ClearText).text = "이미 클리어한 퀘스트입니다";
         GetButton((int)Buttons.ClearButton).interactable = false;
     }

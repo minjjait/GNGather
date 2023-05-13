@@ -58,6 +58,7 @@ public class UI_Transfortation : UI_Base
         UpdateVolume();
     }
 
+    //빠른 이동 시 특정 장소로 잠깐 이동
     private void RideKickboard()
     {                
         //초기화
@@ -93,6 +94,7 @@ public class UI_Transfortation : UI_Base
         gameObject.SetActive(false);
     }
 
+    //도착 시
     void DoArrived()
     {
 

@@ -15,6 +15,7 @@ public class ObjectManager
 		return (GameObjectType)type;
 	}
 
+	//유저 본인 판별 후 오브젝트 생성
 	public void Add(ObjectInfo info, bool myPlayer = false)
 	{
 		if (MyPlayer != null && MyPlayer.Id == info.ObjectId)

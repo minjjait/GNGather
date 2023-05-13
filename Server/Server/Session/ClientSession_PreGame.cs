@@ -158,7 +158,6 @@ namespace Server
 
 		public void HandleCreatePlayer(C_CreatePlayer createPacket)
 		{
-			// TODO : 이런 저런 보안 체크
 			if (ServerState != PlayerServerState.ServerStateLobby)
 				return;
 

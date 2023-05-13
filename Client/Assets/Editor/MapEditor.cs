@@ -14,7 +14,6 @@ public class MapEditor
 #if UNITY_EDITOR
 
 	// % (Ctrl), # (Shift), & (Alt)
-
 	[MenuItem("Tools/GenerateMap %#g")]
 	private static void GenerateMap()
 	{
@@ -22,6 +21,7 @@ public class MapEditor
 		GenerateByPath("../Common/MapData");
 	}
 
+	//각 지열별 번호를 추가한 맵 text파일 생성
 	private static void GenerateByPath(string pathPrefix)
 	{
 		GameObject[] gameObjects = Resources.LoadAll<GameObject>("Prefabs/Map");
@@ -77,7 +77,6 @@ public class MapEditor
                             }
 							if (haveTile == false)
 								writer.Write("0 ");
-
 						}
 					}
 					writer.WriteLine();

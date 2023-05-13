@@ -20,6 +20,7 @@ public class NetworkManager
 		_session.Send(packet);
 	}
 
+	//웹서버에서 주소를 받아서 게임서버에 연결
 	public void ConnectToGame(ServerInfo info)
 	{
 		IPAddress ipAddr = IPAddress.Parse(info.IpAddress);
@@ -32,6 +33,7 @@ public class NetworkManager
 			1);
 	}
 
+	//패킷 전송
 	public void Update()
 	{
 		List<PacketMessage> list = PacketQueue.Instance.PopAll();

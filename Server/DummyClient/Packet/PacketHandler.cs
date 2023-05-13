@@ -103,35 +103,30 @@ class PacketHandler
 	{
 		S_ItemList itemListPacket = packet as S_ItemList;
 	}
-
-	public static void S_AddItemHandler(PacketSession session, IMessage packet)
-	{
-		S_AddItem addItemPacket = packet as S_AddItem;
-	}
-
-	public static void S_TransfortationHandler(PacketSession session, IMessage packet)
-	{
-		S_Transfortation transPacket = packet as S_Transfortation;
-	}
-
 	public static void S_QuestListHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestList questListPacket = packet as S_QuestList;
 	}
-
+	public static void S_AddQuestHandler(PacketSession session, IMessage packet)
+	{
+		S_AddQuest addQuestPacket = packet as S_AddQuest;
+	}
 	public static void S_QuestClearHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestClear questClearPacket = packet as S_QuestClear;
 	}
 
-	public static void S_RegionArriveHandler(PacketSession session, IMessage packet)
-	{
-		S_RegionArrive regionArrivePacket = packet as S_RegionArrive;
-	}
-
 	public static void S_QuestSatisfiedHandler(PacketSession session, IMessage packet)
 	{
 		S_QuestSatisfied questSatisfiedPacket = packet as S_QuestSatisfied;
+	}
+	public static void S_UseTransfortationHandler(PacketSession session, IMessage packet)
+	{
+		S_UseTransfortation useTransdPacket = packet as S_UseTransfortation;
+	}
+	public static void S_TransfortationArrivedHandler(PacketSession session, IMessage packet)
+	{
+		S_TransfortationArrived transArrivedPacket = packet as S_TransfortationArrived;
 	}
 }
 

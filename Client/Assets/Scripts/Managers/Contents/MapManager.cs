@@ -40,6 +40,7 @@ public class MapManager
 
 	int[,] _collision;
 
+	//갈 수 있는 좌표인지 확인
 	public bool CanGo(Vector3Int cellPos)
 	{
 		if (cellPos.x < MinX || cellPos.x > MaxX)
@@ -60,6 +61,7 @@ public class MapManager
         }
 	}
 
+	//맵 생성
 	public void LoadMap(int mapId)
 	{
 		DestroyMap();

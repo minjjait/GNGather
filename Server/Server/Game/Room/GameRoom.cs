@@ -21,9 +21,6 @@ namespace Server.Game
 
 		public Map Map { get; private set; } = new Map();
 
-		// ㅁㅁㅁ
-		// ㅁㅁㅁ
-		// ㅁㅁㅁ
 		public Zone GetZone(Vector2Int cellPos)
 		{
 			int x = (cellPos.x - Map.MinX) / ZoneCells;
@@ -47,9 +44,6 @@ namespace Server.Game
 
 			// Zone
 			ZoneCells = zoneCells; // 10
-			// 1~10 칸 = 1존
-			// 11~20칸 = 2존
-			// 21~30칸 = 3존
 			int countY = (Map.SizeY + zoneCells - 1) / zoneCells;
 			int countX = (Map.SizeX + zoneCells - 1) / zoneCells;
 			Zones = new Zone[countY, countX];
@@ -60,19 +54,8 @@ namespace Server.Game
 					Zones[y, x] = new Zone(y, x);
 				}
 			}
-
-			
-			/* TEMP(DUMMY TEST)
-			for (int i = 0; i < 500; i++)
-			{
-				Monster monster = ObjectManager.Instance.Add<Monster>();
-				monster.Init(1);
-				EnterGame(monster, randomPos: true);
-			}
-			*/
 		}
 
-		// 누군가 주기적으로 호출해줘야 한다
 		public void Update()
 		{
 			Flush();
@@ -223,10 +206,6 @@ namespace Server.Game
 			return zones.SelectMany(z => z.Players).ToList();
 		}
 
-		// ㅁㅁㅁㅁㅁㅁ
-		// ㅁㅁㅁㅁㅁㅁ
-		// ㅁㅁㅁㅁㅁㅁ
-		// ㅁㅁㅁㅁㅁㅁ
 		public List<Zone> GetAdjacentZones(Vector2Int cellPos, int range = GameRoom.VisionCells)
 		{
 			HashSet<Zone> zones = new HashSet<Zone>();

@@ -18,6 +18,7 @@ public class MyPlayerController : PlayerController
 		base.Init();
 	}
 
+
 	// 키보드 입력
 	protected override void UpdateController()
 	{
@@ -53,6 +54,7 @@ public class MyPlayerController : PlayerController
 
 	}
 
+	//카메라 위치를 player 위치로 조정
 	void LateUpdate()
 	{
 		foreach(Camera cam in Camera.allCameras)
@@ -149,6 +151,7 @@ public class MyPlayerController : PlayerController
 
 	}
 
+	//유저 바라보는 방향 변경
 	void GetDirInput()
 	{
 		if (_doConversation == true)
@@ -178,6 +181,7 @@ public class MyPlayerController : PlayerController
 		}
 	}
 
+	//실질적인 이동
 	protected override void MoveToNextPos()
 	{
 		if (_moveKeyPressed == false)
@@ -216,6 +220,7 @@ public class MyPlayerController : PlayerController
 		CheckUpdatedFlag();
 	}
 
+	//위치가 변경되었다면 패킷 전송
 	public void CheckUpdatedFlag()
 	{
 		if (_updated)

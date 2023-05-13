@@ -14,31 +14,6 @@ namespace Server.DB
 		public static DbTransaction Instance { get; } = new DbTransaction();
 
 		// Me (GameRoom) -> You (Db) -> Me (GameRoom)
-		public static void SavePlayerStatus_AllInOne(Player player, GameRoom room)
-		{
-			if (player == null || room == null)
-				return;
-
-			// Me (GameRoom)
-			PlayerDb playerDb = new PlayerDb();
-			playerDb.PlayerDbId = player.PlayerDbId;
-
-			// You
-			Instance.Push(() =>
-			{
-				using (AppDbContext db = new AppDbContext())
-				{
-					db.Entry(playerDb).State = EntityState.Unchanged;
-					//db.Entry(playerDb).Property(nameof(PlayerDb.Hp)).IsModified = true;
-					bool success = db.SaveChangesEx();
-					if (success)
-					{
-						// Me
-					}
-				}
-			});			
-		}
-
 		public static void QuestAccept(Player player, GameRoom room, C_AddQuest questPacket)
 		{
 			if (player == null || room == null)

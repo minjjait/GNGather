@@ -27,6 +27,7 @@ public class BaseController : MonoBehaviour
 		}
 	}
 
+	//말풍선 추가
 	protected void AddSpeechBubble()
 	{
 		GameObject go = Managers.Resource.Instantiate("UI/UI_SpeechBubble", transform);

@@ -29,6 +29,7 @@ public class CreatureController : BaseController
 
 	public float Speed = 10.0f;
 
+	//패킷 받고 위치 Sync
 	public void SyncPos()
 	{
 		Vector3 destPos = Managers.Map.CurrentGrid.CellToWorld(CellPos) + new Vector3(0.5f, 0.5f);
@@ -83,41 +84,6 @@ public class CreatureController : BaseController
 			UpdateAnimation();
 			_updated = true;
 		}
-	}
-
-	public MoveDir GetDirFromVec(Vector3Int dir)
-	{
-		if (dir.x > 0)
-			return MoveDir.Right;
-		else if (dir.x < 0)
-			return MoveDir.Left;
-		else if (dir.y > 0)
-			return MoveDir.Up;
-		else
-			return MoveDir.Down;
-	}
-
-	public Vector3Int GetFrontCellPos()
-	{
-		Vector3Int cellPos = CellPos;
-
-		switch (Dir)
-		{
-			case MoveDir.Up:
-				cellPos += Vector3Int.up;
-				break;
-			case MoveDir.Down:
-				cellPos += Vector3Int.down;
-				break;
-			case MoveDir.Left:
-				cellPos += Vector3Int.left;
-				break;
-			case MoveDir.Right:
-				cellPos += Vector3Int.right;
-				break;
-		}
-
-		return cellPos;
 	}
 
 	protected virtual void UpdateAnimation()
@@ -208,7 +174,7 @@ public class CreatureController : BaseController
 	{
 	}
 
-	// 스르륵 이동하는 것을 처리
+	//자연스러운 이동 처리
 	protected virtual void UpdateMoving()
 	{
 		Vector3 destPos = Managers.Map.CurrentGrid.CellToWorld(CellPos) + new Vector3(0.5f, 0.5f);

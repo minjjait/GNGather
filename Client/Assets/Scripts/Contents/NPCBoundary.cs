@@ -13,7 +13,7 @@ public class NPCBoundary : MonoBehaviour
         Id = int.Parse(_bc.gameObject.name);
     }
 
-    //이것도 일단 드가서 3초동안 대화창 띄우고 다시 사라진다
+    //접근 시 정해진 text 출력
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "MyPlayer")
@@ -29,12 +29,6 @@ public class NPCBoundary : MonoBehaviour
             {
                 _bc.Chat = $"{Managers.Data.RegionPosDict[Id].regionName} 퀘스트 NPC입니다~~";
             }
-            /*
-            else if (gameObject.tag == "TransfortationNPC")
-            {
-                _bc.Chat = $"이 곳은 {Managers.Data.RegionPosDict[Id].regionName}입니다";
-            }
-            */
         }
     }
 }

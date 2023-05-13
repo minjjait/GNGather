@@ -13,6 +13,7 @@ public class PlayerManager
     public bool UsingTransfortation { get; set; } = false;
     public int ErrorNum { get; set; } = 0;
 
+    //퀘스트 보유 여부 확인
     public bool HaveUniqueQuest(int id)
     {
         bool contain = Quests.ContainsKey(id);
@@ -26,6 +27,7 @@ public class PlayerManager
         }
     }
 
+    //퀘스트 생성
     public Quest MakeQuest(QuestInfo questInfo)
 	{
 		Quest quest = new Quest();

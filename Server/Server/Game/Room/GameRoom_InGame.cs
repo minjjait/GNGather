@@ -16,7 +16,6 @@ namespace Server.Game
             if (player == null)
 				return;
 
-			// TODO : 검증
 			PositionInfo movePosInfo = movePacket.PosInfo;
 			ObjectInfo info = player.Info;
 
@@ -45,8 +44,6 @@ namespace Server.Game
 				return;
 
             Console.WriteLine($"채팅 : {speechPacket.Chat}");
-
-			// TODO : 검증 할게 있나..?
 
 			// 다른 플레이어한테도 알려준다
 			S_SpeechBubble resSpeechPacket = new S_SpeechBubble();
@@ -112,7 +109,6 @@ namespace Server.Game
 			if (player == null)
 				return;
 
-			// TODO : 검증
 			PositionInfo movePosInfo = transfortationPacket.PosInfo;
 			ObjectInfo info = player.Info;
 
@@ -133,7 +129,6 @@ namespace Server.Game
 			if (player == null)
 				return;
 
-			// TODO : 검증
 			PositionInfo movePosInfo = transfortationPacket.PosInfo;
 			ObjectInfo info = player.Info;
 

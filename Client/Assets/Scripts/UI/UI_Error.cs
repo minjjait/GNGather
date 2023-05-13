@@ -27,6 +27,7 @@ public class UI_Error : UI_Base
         _coErrorMessage = StartCoroutine("CoErrorMessage");
     }
 
+    //에러 메세지가 1초 동안 천천히 사라지는 효과
     IEnumerator CoErrorMessage()
     {
         for (int i = 0; i < 100; i++)  
